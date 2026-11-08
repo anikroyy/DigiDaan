@@ -35,6 +35,7 @@ input[type=text],input[type=number],select{width:100%;padding:10px 11px;border:1
 .chk label{display:flex;gap:8px;align-items:center;font-weight:500;margin:0}
 .chk input{width:18px;height:18px;accent-color:var(--teal)}
 .btn{border:0;background:var(--teal);color:#04232b;font:700 14px inherit;padding:11px 16px;border-radius:12px;cursor:pointer;margin-top:12px;text-decoration:none;display:inline-block}
+.btn[disabled],input[disabled]{opacity:.45;cursor:not-allowed}
 .btn.alt{background:var(--soft);color:var(--ink);border:1px solid var(--line)}
 .btn.sm{padding:7px 11px;font-size:12px;margin:0}
 .item{display:flex;justify-content:space-between;gap:10px;align-items:center;border-top:1px solid var(--line);padding:10px 0}
@@ -88,12 +89,12 @@ input:focus,select:focus{outline:0;border-color:var(--teal);box-shadow:0 0 0 3px
 #splash .mark{width:84px;height:84px;border-radius:24px;background:#2cc4b8;color:#04232b;display:grid;place-items:center;font:800 46px system-ui,sans-serif;animation:markIn .9s cubic-bezier(.2,.8,.2,1) backwards,ring 2.4s ease-out .9s infinite}
 @keyframes markIn{from{opacity:0;transform:scale(.4) rotate(-12deg)}to{opacity:1;transform:none}}
 @keyframes ring{0%{box-shadow:0 0 0 0 rgba(44,196,184,.45)}100%{box-shadow:0 0 0 34px rgba(44,196,184,0)}}
-#splash .sw{display:flex;font:800 clamp(38px,11vw,64px)/1 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:#e6eef5;letter-spacing:-1px}
+#splash .sw{display:flex;font:700 clamp(46px,13vw,77px)/1 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:#e6eef5;letter-spacing:-1px}
 #splash .sw span{display:inline-block;animation:letter .9s cubic-bezier(.2,.8,.2,1) backwards;animation-delay:calc(.55s + var(--i)*.09s)}
 @keyframes letter{from{opacity:0;transform:translateY(26px);filter:blur(10px)}to{opacity:1;transform:none;filter:blur(0)}}
 #splash .st{color:#2cc4b8;font-weight:600;letter-spacing:.5px;animation:fade 1s 1.7s ease backwards}
 @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-#splash .ld{width:min(220px,50vw);height:3px;border-radius:9px;background:rgba(255,255,255,.12);overflow:hidden;margin-top:10px;animation:fade .8s 1.2s ease backwards}
+#splash .ld{width:min(264px,60vw);height:4px;border-radius:9px;background:rgba(255,255,255,.12);overflow:hidden;margin-top:10px;animation:fade .8s 1.2s ease backwards}
 #splash .ld i{display:block;height:100%;background:linear-gradient(90deg,#2cc4b8,#f4a259);transform-origin:left;animation:grow 1.6s 1.3s cubic-bezier(.4,0,.2,1) backwards}
 #splash.out{opacity:0;transform:scale(1.05);filter:blur(8px);pointer-events:none;transition:opacity .9s ease,transform .9s ease,filter .9s ease}
 .js body:not(.ready){overflow:hidden}
@@ -182,9 +183,10 @@ details p{margin:8px 0 0;color:var(--mut);font-size:14px;animation:up .5s backwa
 .item.col .pill::before{opacity:.62}
 .item.col .pill.d{background:#4cd08a;color:#052e16;box-shadow:0 0 0 5px rgba(76,208,138,.22),0 6px 18px rgba(76,208,138,.35)}
 .item.col .pill.d::before{opacity:.72}
+.item:not(.col) .pill{display:inline-flex;align-items:center;justify-content:center;text-align:center;box-sizing:border-box;min-width:104px;padding:7px 16px;line-height:1.2}
 .pill.w{background:rgba(244,162,89,.14);color:#f4a259;border-color:rgba(244,162,89,.55)}
 .mapl{color:#2cc4b8;font-size:12.5px;font-weight:600;text-decoration:none;border-bottom:1px dashed #2cc4b8}
-#splash .mark{background:none;width:100px;height:100px;border-radius:32px;font-size:0;box-shadow:0 0 0 0 rgba(44,196,184,.45);filter:drop-shadow(0 14px 34px rgba(124,108,230,.45))}
+#splash .mark{background:none;width:120px;height:120px;border-radius:40px;font-size:0;box-shadow:0 0 0 0 rgba(44,196,184,.45);filter:drop-shadow(0 14px 34px rgba(124,108,230,.45))}
 #splash .mark svg{width:100%;height:100%;display:block}
 .lgd{fill:none;stroke:#fff;stroke-width:3.4;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:150;stroke-dashoffset:150;animation:lgdraw 1.5s .55s cubic-bezier(.4,0,.2,1) forwards}
 .lgh{fill:#fff;transform-box:fill-box;transform-origin:center;animation:lgheart 1.1s 1.55s cubic-bezier(.2,.9,.3,1.4) backwards,lgbeat 1.8s 2.7s ease-in-out infinite}
@@ -194,7 +196,7 @@ details p{margin:8px 0 0;color:var(--mut);font-size:14px;animation:up .5s backwa
 @keyframes lgbeat{0%,100%{transform:scale(1)}50%{transform:scale(1.14)}}
 @keyframes lgshine{to{transform:translateX(120%)}}
 #splash .mark{position:relative;overflow:visible}
-#splash .lgclip{position:absolute;inset:0;border-radius:32px;overflow:hidden;pointer-events:none}
+#splash .lgclip{position:absolute;inset:0;border-radius:40px;overflow:hidden;pointer-events:none}
 .logo span{background:linear-gradient(135deg,#2cc4b8,#a78bfa)}
 .logo span svg{width:26px;height:26px;stroke:#fff;fill:none;stroke-width:3.4;stroke-linecap:round;stroke-linejoin:round}
 .logo span svg .hs{fill:#fff;stroke:none}
@@ -227,15 +229,50 @@ details p{margin:8px 0 0;color:var(--mut);font-size:14px;animation:up .5s backwa
  .chk{display:grid;grid-template-columns:1fr 1fr;gap:10px 18px}
  #donate>.card:nth-child(2),#need>.card:nth-child(2){position:sticky;top:96px}
 }
+#pf{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:1;transition:opacity 1.8s ease}
+.js body:not(.ready) #pf{opacity:0}
+.wrap{position:relative;z-index:1}
+#splash .sbg{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+#splash>:not(.sbg){position:relative;z-index:1}
+#splash .o{position:absolute;border-radius:50%;filter:blur(80px);will-change:transform;opacity:0;animation:sbin 1.6s ease forwards}
+#splash .o1{width:60vmax;height:60vmax;left:-18vmax;top:-22vmax;background:radial-gradient(circle,#2cc4b8,transparent 68%);--a:.42;animation:sbin 1.6s ease forwards,sbo1 9s ease-in-out infinite alternate}
+#splash .o2{width:64vmax;height:64vmax;right:-22vmax;bottom:-26vmax;background:radial-gradient(circle,#a78bfa,transparent 68%);--a:.4;animation:sbin 1.6s .2s ease forwards,sbo2 11s ease-in-out infinite alternate}
+#splash .o3{width:34vmax;height:34vmax;left:50%;top:50%;margin:-17vmax 0 0 -17vmax;background:radial-gradient(circle,#f4a259,transparent 68%);--a:.16;animation:sbin 2s .5s ease forwards,sbo3 7s ease-in-out infinite alternate}
+#splash .rg{position:absolute;left:50%;top:calc(50% - 105px);width:120px;height:120px;margin:-60px 0 0 -60px;border-radius:50%;border:1.5px solid rgba(120,200,255,.4);box-shadow:0 0 24px rgba(44,196,184,.25) inset;opacity:0;animation:sbr 3.9s cubic-bezier(.2,.6,.3,1) infinite}
+#splash .r2{animation-delay:1.3s;border-color:rgba(167,139,250,.4)}
+#splash .r3{animation-delay:2.6s;border-color:rgba(244,162,89,.35)}
+#splash .sp{position:absolute;bottom:-12px;left:var(--x);width:var(--s);height:var(--s);border-radius:50%;background:#fff;opacity:0;box-shadow:0 0 9px 2px rgba(44,196,184,.75);animation:sbs var(--d) linear var(--dl) infinite}
+#splash .sp:nth-child(3n){box-shadow:0 0 9px 2px rgba(167,139,250,.8)}
+#splash .sp:nth-child(5n){box-shadow:0 0 9px 2px rgba(244,162,89,.8)}
+@keyframes sbin{to{opacity:var(--a,.4)}}
+@keyframes sbo1{to{transform:translate3d(14vmax,10vmax,0) scale(1.15)}}
+@keyframes sbo2{to{transform:translate3d(-12vmax,-9vmax,0) scale(1.1)}}
+@keyframes sbo3{to{transform:translate3d(5vmax,-4vmax,0) scale(1.3)}}
+@keyframes sbr{0%{transform:scale(.7);opacity:0}15%{opacity:.7}100%{transform:scale(7.5);opacity:0}}
+@keyframes sbs{0%{transform:translate3d(0,0,0) scale(.6);opacity:0}12%{opacity:.95}85%{opacity:.6}100%{transform:translate3d(var(--dx),-108vh,0) scale(1);opacity:0}}
+#splash .gr{position:absolute;left:-60%;right:-60%;bottom:-8%;height:58%;opacity:0;transform:perspective(520px) rotateX(64deg);transform-origin:50% 100%;
+ background:linear-gradient(rgba(44,196,184,.38) 1px,transparent 1px) 0 0/100% 52px,linear-gradient(90deg,rgba(167,139,250,.34) 1px,transparent 1px) 0 0/52px 100%;
+ -webkit-mask-image:linear-gradient(to top,#000 5%,transparent 88%);mask-image:linear-gradient(to top,#000 5%,transparent 88%);animation:sbgi 1.8s .4s ease forwards,sbgm 2.6s linear infinite;will-change:background-position}
+#splash .ob{position:absolute;left:50%;top:calc(50% - 105px);width:var(--R);height:var(--R);margin:calc(var(--R)/-2) 0 0 calc(var(--R)/-2);transform:rotate(var(--rot)) scaleY(.36);opacity:0;animation:sbgi 1.6s 1s ease forwards}
+#splash .ob b{position:absolute;inset:0;border-radius:50%;border:1px solid rgba(255,255,255,.09);animation:sbz var(--T) linear infinite}
+#splash .ob b::before{content:"";position:absolute;top:-5px;left:50%;width:10px;height:10px;margin-left:-5px;border-radius:50%;background:#fff;box-shadow:0 0 14px 5px var(--c)}
+#splash .ob b::after{content:"";position:absolute;bottom:-4px;left:50%;width:6px;height:6px;margin-left:-3px;border-radius:50%;background:var(--c);opacity:.8;box-shadow:0 0 10px 3px var(--c)}
+#splash #sbw{position:absolute;inset:0;width:100%;height:100%;display:block;opacity:0;animation:sbwi 1.4s ease forwards}
+#splash.gl .o{display:none}
+@keyframes sbgi{to{opacity:.7}}
+@keyframes sbwi{to{opacity:1}}
+@keyframes sbgm{to{background-position:0 52px,52px 0}}
+@keyframes sbz{to{transform:rotate(360deg)}}
 </style>
 <script>document.documentElement.classList.add("js")</script>
 </head>
 <body>
-<div id="splash" aria-hidden="true"><div class="mark"><svg viewBox="0 0 96 96" aria-hidden="true"><defs><linearGradient id="lgg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2cc4b8"/><stop offset=".55" stop-color="#6f8be8"/><stop offset="1" stop-color="#a78bfa"/></linearGradient></defs><rect width="96" height="96" rx="32" fill="url(#lgg)"/><path class="lgd" d="M27 31a4 4 0 0 1 4-4h34a4 4 0 0 1 4 4v24a4 4 0 0 1-4 4H31a4 4 0 0 1-4-4z"/><path class="lgd" d="M19 68h58"/><path class="lgh" d="M48 55C38 49 38 40 43.500 39.200 46 38.900 48 40.500 48 42.500 48 40.500 50 38.900 52.500 39.200 58 40 58 49 48 55z"/></svg><div class="lgclip"><div class="lgsh"></div></div></div><div class="sw"><span style="--i:0">D</span><span style="--i:1">i</span><span style="--i:2">g</span><span style="--i:3">i</span><span style="--i:4">D</span><span style="--i:5">a</span><span style="--i:6">a</span><span style="--i:7">n</span></div><div class="st">Give a device. Unlock learning.</div><div class="ld"><i></i></div></div>
+<div id="splash" aria-hidden="true"><div class="sbg"><i class="o o1"></i><i class="o o2"></i><i class="o o3"></i><i class="gr"></i><i class="ob" style="--R:270px;--rot:-18deg;--T:9s;--c:#2cc4b8"><b></b></i><i class="ob" style="--R:400px;--rot:14deg;--T:15s;--c:#a78bfa"><b></b></i><i class="ob" style="--R:560px;--rot:-32deg;--T:22s;--c:#f4a259"><b></b></i><i class="rg r1"></i><i class="rg r2"></i><i class="rg r3"></i><b class="sp" style="--x:43%;--s:4.4px;--d:6.6s;--dl:-0.3s;--dx:28px"></b><b class="sp" style="--x:14%;--s:2.9px;--d:5.2s;--dl:-3.0s;--dx:-36px"></b><b class="sp" style="--x:13%;--s:3.1px;--d:5.3s;--dl:-0.5s;--dx:14px"></b><b class="sp" style="--x:9%;--s:4.1px;--d:5.5s;--dl:-1.3s;--dx:40px"></b><b class="sp" style="--x:76%;--s:4.4px;--d:7.3s;--dl:-2.4s;--dx:-12px"></b><b class="sp" style="--x:7%;--s:3.4px;--d:5.5s;--dl:-2.5s;--dx:29px"></b><b class="sp" style="--x:17%;--s:3.4px;--d:7.2s;--dl:-4.1s;--dx:-27px"></b><b class="sp" style="--x:76%;--s:3.4px;--d:5.8s;--dl:-0.6s;--dx:-32px"></b><b class="sp" style="--x:74%;--s:2.1px;--d:5.8s;--dl:-4.1s;--dx:14px"></b><b class="sp" style="--x:42%;--s:3.2px;--d:8.7s;--dl:-2.2s;--dx:-9px"></b><b class="sp" style="--x:25%;--s:3.7px;--d:6.0s;--dl:-3.4s;--dx:27px"></b><b class="sp" style="--x:65%;--s:4.2px;--d:7.9s;--dl:-1.7s;--dx:-31px"></b><b class="sp" style="--x:17%;--s:3.3px;--d:5.7s;--dl:-2.1s;--dx:22px"></b><b class="sp" style="--x:55%;--s:2.1px;--d:7.7s;--dl:-4.6s;--dx:33px"></b><b class="sp" style="--x:42%;--s:2.9px;--d:6.4s;--dl:-3.0s;--dx:18px"></b><b class="sp" style="--x:10%;--s:4.1px;--d:8.8s;--dl:-2.8s;--dx:-32px"></b><b class="sp" style="--x:9%;--s:3.8px;--d:6.2s;--dl:-3.5s;--dx:17px"></b><b class="sp" style="--x:38%;--s:3.8px;--d:8.5s;--dl:-2.1s;--dx:19px"></b><b class="sp" style="--x:47%;--s:2.4px;--d:5.5s;--dl:-0.4s;--dx:-4px"></b><b class="sp" style="--x:18%;--s:3.8px;--d:6.6s;--dl:-5.5s;--dx:23px"></b><b class="sp" style="--x:12%;--s:2.4px;--d:6.6s;--dl:-1.7s;--dx:-23px"></b><b class="sp" style="--x:57%;--s:4.2px;--d:6.1s;--dl:-2.5s;--dx:5px"></b><b class="sp" style="--x:89%;--s:4.2px;--d:8.8s;--dl:-0.9s;--dx:-18px"></b><b class="sp" style="--x:21%;--s:2.6px;--d:5.9s;--dl:-2.9s;--dx:35px"></b><b class="sp" style="--x:25%;--s:2.7px;--d:5.0s;--dl:-2.5s;--dx:7px"></b><b class="sp" style="--x:80%;--s:3.4px;--d:8.8s;--dl:-4.1s;--dx:25px"></b></div><div class="mark"><svg viewBox="0 0 96 96" aria-hidden="true"><defs><linearGradient id="lgg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2cc4b8"/><stop offset=".55" stop-color="#6f8be8"/><stop offset="1" stop-color="#a78bfa"/></linearGradient></defs><rect width="96" height="96" rx="32" fill="url(#lgg)"/><path class="lgd" d="M27 31a4 4 0 0 1 4-4h34a4 4 0 0 1 4 4v24a4 4 0 0 1-4 4H31a4 4 0 0 1-4-4z"/><path class="lgd" d="M19 68h58"/><path class="lgh" d="M48 55C38 49 38 40 43.500 39.200 46 38.900 48 40.500 48 42.500 48 40.500 50 38.900 52.500 39.200 58 40 58 49 48 55z"/></svg><div class="lgclip"><div class="lgsh"></div></div></div><div class="sw"><span style="--i:0">D</span><span style="--i:1">i</span><span style="--i:2">g</span><span style="--i:3">i</span><span style="--i:4">D</span><span style="--i:5">a</span><span style="--i:6">a</span><span style="--i:7">n</span></div><div class="st">Give a device. Unlock learning.</div><div class="ld"><i></i></div></div>
 
 <div class="wrap">
 <div class="top"><div><div class="logo"><span><svg viewBox="0 0 96 96" aria-hidden="true"><path d="M27 31a4 4 0 0 1 4-4h34a4 4 0 0 1 4 4v24a4 4 0 0 1-4 4H31a4 4 0 0 1-4-4z"/><path d="M19 68h58"/><path class="hs" d="M48 55C38 49 38 40 43.500 39.200 46 38.900 48 40.500 48 42.500 48 40.500 50 38.900 52.500 39.200 58 40 58 49 48 55z"/></svg></span>DigiDaan</div><p class="tag">Give a device. Unlock learning.</p></div><div class="acts" id="auth"></div></div>
 <div class="note" id="cfgwarn" style="display:none">Firebase isn’t set up yet. Paste your <b>firebaseConfig</b> into the script (see README steps) to turn on the shared database.</div>
+<div class="note" style="margin:8px 0 0"><b>Preview mode.</b> Data stays in this browser, and the Admin sign-in button is simulated so you can try every step. The real version uses Firebase.</div>
 <div class="hero2"><span class="chip">SDG 4 · SDG 10 · SDG 12</span><h1 class="hero-h">Give a device.<br>Unlock learning.</h1><p>DigiDaan connects unused phones and laptops in Navi Mumbai with students who need them, through school and NGO coordinators that are checked and approved.</p><div class="acts"><button class="btn" data-t="donate">Donate a device</button><button class="btn alt" data-t="need">I need a device</button></div></div>
 <div class="stats">
 <div class="stat"><b id="s1">0</b><small>Available devices</small></div>
@@ -256,44 +293,46 @@ details p{margin:8px 0 0;color:var(--mut);font-size:14px;animation:up .5s backwa
 <select id="dm"><option value="drop">I will drop it at the school/NGO</option><option value="pickup">Coordinator collects from a public place in my locality</option></select>
 <label>Condition checklist</label>
 <div class="chk"><label><input type="checkbox" id="c1"> Powers on and works</label><label><input type="checkbox" id="c2"> Screen and touch are fine</label><label><input type="checkbox" id="c3"> Battery holds charge</label><label><input type="checkbox" id="c4"> Charger included</label><label><input type="checkbox" id="c5"> Factory reset done (personal data wiped)</label></div>
-<button class="btn" type="submit">List device</button></form>
+<input type="text" id="hp1" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;opacity:0;height:0"><button class="btn" type="submit">List device</button></form>
 <div class="note">A device must power on and be factory reset before it can be listed.</div></div>
 <div class="card"><h3>Available devices (public)</h3><div id="dl"></div></div>
 </section>
 
 <section id="need">
 <div class="card" id="needform"></div>
-<div class="card"><h3>Open needs (public)</h3><p class="sub">Donors can see who needs what. Students appear only by initials.</p><div id="nl"></div></div>
+<div class="card" id="mycard"><h3>Your requests</h3><p class="sub">Messages about your request appear here: when it is submitted, approved and matched. Anyone can register, no sign-in needed.</p><div id="myl"></div></div>
+<div class="card"><h3>All needs (public)</h3><p class="sub">Approved and pending needs are both shown. Students appear only by initials.</p><div id="nl"></div></div>
 </section>
 
 <section id="match"><div class="card"><h2>Smart matching</h2><p class="sub">Score = urgency (1–5) + device fit (0–5) + same-locality bonus (3).</p><div id="mbox"></div></div></section>
-<section id="log"><div class="card"><h2>Handover log</h2><p class="sub">Coordinators only. A device is marked received when the donor’s code is entered.</p><div class="note" style="margin:0 0 6px"><b>Safety:</b> meet at the school/NGO or a public place in daylight. An adult coordinator receives the device. Never share personal data.</div><div id="lbox"></div></div><div class="card" id="admincard" style="display:none"><h3>Admin: approve institutions</h3><p class="sub">Only admin emails see this. Check the ID and the Google Maps listing, then approve.</p><div id="alist"></div></div></section>
+<section id="log"><div class="card"><h2>Handover log</h2><p class="sub">Open to everyone. The coordinator and the donor contact each other, meet and confirm the handover here.</p><div class="note" style="margin:0 0 6px"><b>Safety:</b> meet at the school/NGO or a public place in daylight. An adult coordinator receives the device. Never share personal data.</div><div id="lbox"></div></div><div class="card" id="admincard" style="display:none"><h3>Admin: approve institutions</h3><p class="sub">Only admin emails see this. Check the ID and the Google Maps listing, then approve.</p><div id="alist"></div></div></section>
 </div>
 <div class="wrap" style="padding-bottom:120px">
 <div class="card"><h2>How DigiDaan works</h2><p class="sub">Four simple steps from a spare device to a student’s desk.</p><div class="steps4">
 <div class="st4"><span class="ic" data-i="laptop"></span><b>1. List</b><small>Donors add a working device and confirm it is wiped.</small></div>
 <div class="st4"><span class="ic" data-i="arrow"></span><b>2. Match</b><small>Coordinators match it by urgency, fit and locality.</small></div>
 <div class="st4"><span class="ic" data-i="user"></span><b>3. Meet</b><small>Hand over at the school or NGO, or in a public place.</small></div>
-<div class="st4"><span class="ic" data-i="check"></span><b>4. Verify</b><small>A 4-digit code confirms the handover and makes a receipt.</small></div></div></div>
+<div class="st4"><span class="ic" data-i="check"></span><b>4. Verify</b><small>The donor sends a 4-digit code and the coordinator enters it to confirm the handover and make a receipt.</small></div></div></div>
 <div class="card"><h2>Why it matters</h2><div class="cnts"><div><b class="cnt" data-to="62" data-suf="M">0</b><small>tonnes of e-waste worldwide in 2022</small></div><div><b class="cnt" data-to="4.4" data-dec="1" data-suf="%">0</b><small>of rural households had a computer (2017-18)</small></div><div><b class="cnt" data-to="3">0</b><small>UN goals supported: SDG 4, 10 and 12</small></div></div><p class="sub" style="margin:12px 0 0">Sources: Global E-waste Monitor 2024; NSS 75th round.</p></div>
 <div class="card"><h2>Questions</h2><details><summary>Who can donate?</summary><p>Anyone with a working phone, laptop or tablet. It must power on and be factory reset first.</p></details><details><summary>Is my number public?</summary><p>No. Numbers are never shown on the site. They are used only to create message links after a match.</p></details><details><summary>Who receives the devices?</summary><p>Students whose need is registered by an approved school or NGO coordinator. Students appear by initials only.</p></details><details><summary>How are schools and NGOs checked?</summary><p>Each institution gives its registration ID (UDISE+ for schools, NGO Darpan for NGOs) and can be looked up on Google Maps. An admin approves it before its needs can be matched.</p></details><details><summary>Is this a real service yet?</summary><p>It is a college project prototype for Nirman Lab - I, so some listings may be demonstration data.</p></details></div>
 <div class="foot">DigiDaan · Nirman Lab - I · Anik Roy, Roll No. C25, Division C<br>Terna Engineering College, Nerul · Supporting SDG 4, 10 and 12</div></div>
 <div id="toast"></div>
 
 <script type="module">
-// ===== PASTE YOUR FIREBASE CONFIG HERE =====
-const firebaseConfig={apiKey:"AIzaSyB4QRalleKfM25sBleRACyaLKAj98TXBbY",authDomain:"digidaan-d40d3.firebaseapp.com",projectId:"digidaan-d40d3",storageBucket:"digidaan-d40d3.firebasestorage.app",messagingSenderId:"619469107666",appId:"1:619469107666:web:e10939c62981a46ebb580b"};
-// ===========================================
 import{initializeApp}from"https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import{getAuth,GoogleAuthProvider,signInWithPopup,signOut,onAuthStateChanged}from"https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import{getAuth,GoogleAuthProvider,signInWithPopup,signOut,onAuthStateChanged,signInAnonymously}from"https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 import{getFirestore,collection,doc,setDoc,updateDoc,deleteDoc,onSnapshot}from"https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-
-const ADMINS=["anikroy1608@gmail.com"]; // admins who can approve institutions
+const firebaseConfig={apiKey:"AIzaSyB4QRalleKfM25sBleRACyaLKAj98TXBbY",authDomain:"digidaan-d40d3.firebaseapp.com",projectId:"digidaan-d40d3",storageBucket:"digidaan-d40d3.firebasestorage.app",messagingSenderId:"619469107666",appId:"1:619469107666:web:e10939c62981a46ebb580b"};
+const ADMINS=["royanik1608@gmail.com"]; // only this Google account gets admin powers
 const AREAS=["Nerul","Vashi","Belapur CBD","Kharghar","Airoli","Sanpada","Seawoods","Panvel"];
 const FIT={classes:{laptop:4,tablet:4,phone:3},coding:{laptop:5,tablet:2,phone:1},exams:{laptop:4,tablet:3,phone:2},general:{laptop:3,tablet:3,phone:3}};
 const PL={classes:"Online classes",coding:"Coding",exams:"Exam prep",general:"General study"},TL={laptop:"Laptop",phone:"Smartphone",tablet:"Tablet"};
 const $=i=>document.getElementById(i),esc=t=>String(t).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])),uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,6);
-let D=[],N=[],L=[],C={},U=null,props=[],db,auth,unsubs=[];
+let D=[],N=[],L=[],C={},U=null,props=[],db,auth,unsubs=[],H={},MY=[],MYD=[],PREV={};
+try{MY=JSON.parse(localStorage.getItem("dd_my")||"[]");PREV=JSON.parse(localStorage.getItem("dd_prev")||"{}");MYD=JSON.parse(localStorage.getItem("dd_myd")||"[]")}catch(e){}
+const saveMy=()=>{try{localStorage.setItem("dd_my",JSON.stringify(MY));localStorage.setItem("dd_prev",JSON.stringify(PREV));localStorage.setItem("dd_myd",JSON.stringify(MYD))}catch(e){}};
+const isAdm=()=>!!U&&!U.isAnonymous&&ADMINS.includes(U.email);
+const mine=o=>!!U&&!!o&&o===U.uid;
 function toast(m){const t=$("toast");t.textContent=m;t.classList.add("show");clearTimeout(toast.h);toast.h=setTimeout(()=>t.classList.remove("show"),2600)}
 function show(t){document.querySelectorAll("section").forEach(s=>s.classList.toggle("on",s.id===t));document.querySelectorAll(".tabs button").forEach(b=>b.classList.toggle("on",b.dataset.t===t))}
 const dev=id=>D.find(d=>d.id===id),nd=id=>N.find(n=>n.id===id);
@@ -304,6 +343,14 @@ function score(n,d){if(n.pref!=="any"&&n.pref!==d.type)return null;const fit=FIT
 function vbadge(n){var y=n.ver!=="pending";return '<span class="pill '+(y?"d":"w")+'">'+(y?"Verified \u2714":"Awaiting approval")+'</span> <a class="mapl" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query='+encodeURIComponent(n.org+" "+n.area+" Navi Mumbai")+'">Check on Google Maps</a>'+(n.who==="stu"?' <small>· Student request</small>':n.reg?' <small>· '+esc(n.typ||"ID")+' '+esc(n.reg)+'</small>':"")}
 function adminRows(list){return list.length?list.map(function(n){return '<div class="item"><div><b>'+esc(n.org)+'</b> ('+esc(n.typ||"")+') · '+esc(n.area)+'<br><small>'+(n.who==="stu"?"Student request (parent or guardian informed)":"ID: "+esc(n.reg||"none"))+'</small><br><a class="mapl" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query='+encodeURIComponent(n.org+" "+n.area+" Navi Mumbai")+'">Check on Google Maps</a></div><div class="acts"><button class="btn sm" data-ap="'+n.id+'">Approve</button><button class="btn alt sm" data-rj="'+n.id+'">Reject</button></div></div>'}).join(""):'<div class="empty">No institutions awaiting approval.</div>'}
 function renderAdmin(){const c=$("admincard");if(!c)return;const adm=!!U&&ADMINS.includes(U.email);c.style.display=adm?"block":"none";if(adm)$("alist").innerHTML=adminRows(N.filter(n=>n.ver==="pending"))}
+function renderMine(){const el=$("myl");if(!el)return;
+ MY=U?N.filter(x=>mine(x.owner)).map(x=>x.id):[];
+ el.innerHTML=MY.length?MY.map(id=>{const n=N.find(x=>x.id===id);if(!n)return "";
+  const st=n.st==="matched"?"matched":n.ver!=="pending"?"approved":"pending";
+  const msg=st==="pending"?"Request submitted. The admin will soon verify and approve your need.":st==="approved"?"Congratulations! Your need has been approved. We will match it with a donor soon.":"Congratulations! Your need has been approved and matched with a donor.";
+  if(PREV[id]&&PREV[id]!==st)toast(msg);PREV[id]=st;
+  return '<div class="item col"><div><b>'+esc(n.org)+'</b> · '+esc(n.stu)+'</div><div class="note" style="margin:8px 0 0">'+msg+(st==="matched"?' Open the <b>Log</b> tab to contact the donor and complete the handover.':'')+'</div>'+(n.st==="open"?'<div class="acts" style="margin-top:8px"><button class="btn alt sm" data-rn="'+n.id+'">Cancel request</button></div>':'')+'</div>'}).join(""):gate("You have not registered a request from this browser yet.");
+ saveMy()}
 function runMatch(){
  const ds=D.filter(d=>d.st==="available"),ns=N.filter(n=>n.st==="open"&&n.ver!=="pending"),all=[];
  ns.forEach(n=>ds.forEach(d=>{const s=score(n,d);if(s)all.push({n:n.id,d:d.id,s})}));
@@ -314,35 +361,38 @@ function runMatch(){
 async function confirmM(p){
  const d=dev(p.d),n=nd(p.n);if(!d||!n)return;
  await updateDoc(doc(db,"devices",p.d),{st:"matched"});await updateDoc(doc(db,"needs",p.n),{st:"matched"});
- await setDoc(doc(db,"log",uid()),{d:p.d,n:p.n,sc:p.s.total,date:new Date().toLocaleDateString("en-IN"),st:"scheduled",fb:"",code:String(1000+Math.floor(Math.random()*9000)),pt:n.addr||n.org,sl:n.slot||"to be agreed",md:d.mode||"drop",by:U.email});
+ const code=String(1000+Math.floor(Math.random()*9000));
+ await setDoc(doc(db,"handovers",p.n),{n:p.n,dev:p.d,dtype:d.type,donor:d.name,dph:C["dev_"+p.d]||"",cph:C["need_"+p.n]||"",org:n.org,stu:n.stu,pt:n.addr||n.org,sl:n.slot||"to be agreed",md:d.mode||"drop",area:d.area,code,status:"scheduled",fb:""});
  props=props.filter(x=>x!==p);
 }
-function logCard(l){
- const d=dev(l.d),n=nd(l.n);if(!d||!n)return"";const done=l.st==="done",ph=C["dev_"+d.id]||"";
- const m1="Hello "+d.name+", I’m the DigiDaan coordinator from "+n.org+". Your "+TL[d.type]+" has been matched to a student. Can we meet at "+l.pt+" ("+l.sl+")? Your handover code is "+l.code+". Please share it only when you hand over the device.";
- let h='<div class="item col"><div style="display:flex;justify-content:space-between;gap:8px"><div><b>'+esc(TL[d.type])+'</b> → <b>'+esc(n.stu)+'</b>, '+esc(n.org)+'<br><small>Donor '+esc(d.name)+' · matched '+esc(l.date)+' · score '+l.sc+'/13</small></div><span class="pill '+(done?"d":"m")+'">'+(done?"Handed over":l.st==="met"?"Met":"Scheduled")+'</span></div><div class="steps">';
- h+='<div><b>1. Contact the donor</b><div class="acts" style="margin-top:6px"><a class="btn sm" target="_blank" rel="noopener" href="'+wa(ph,m1)+'">Message on WhatsApp</a></div></div>';
- h+='<div><b>2. Meet</b><br>'+esc(l.pt)+' · '+esc(l.sl)+'<br><small>'+(l.md==="drop"?"Donor drops the device at the school/NGO.":"Collect from a public place in "+esc(d.area)+".")+'</small>'+(l.st==="scheduled"?'<div class="acts" style="margin-top:6px"><button class="btn alt sm" data-m="'+l.id+'">Mark as met</button></div>':(l.st==="met"?'<br><small>\u2714 Meeting confirmed</small>':""))+'</div>';
- if(!done)h+='<div><b>3. Verify and receive</b><br><small>Ask the donor for the 4-digit code sent in the message.</small><div class="acts" style="margin-top:6px"><input type="text" id="vc'+l.id+'" inputmode="numeric" maxlength="4" placeholder="4-digit code" style="width:130px"><button class="btn sm" data-v="'+l.id+'">Verify and mark received</button></div></div>';
- else h+='<div><b>3. Received</b> ✔<br><small>Receipt DD-'+esc(l.id.slice(-5))+': '+esc(TL[d.type])+' from '+esc(d.name)+' received by '+esc(n.org)+' on '+esc(l.done||l.date)+', code verified.</small>'+(l.fb?'<br><small>Feedback: “'+esc(l.fb)+'”</small>':'<div class="acts" style="margin-top:6px"><input type="text" id="fb'+l.id+'" placeholder="Student feedback" style="width:170px"><button class="btn sm" data-f="'+l.id+'">Save</button></div>')+'</div>';
- return h+'</div></div>';
-}
+const mb=(ph,m,c,l)=>ph?'<a class="'+c+'" target="_blank" rel="noopener" href="'+wa(ph,m)+'">'+l+'</a>':'<button class="'+c+'" data-np="1">'+l+'</button>';
+function logCard(h){const id=h.id,done=h.status==="done",n=done?4:h.status==="met"?3:2;
+ const m1="Hello "+h.donor+", I’m the DigiDaan coordinator from "+h.org+". Your "+TL[h.dtype]+" has been matched to a student. Can we meet at "+h.pt+" ("+h.sl+")? When we meet and you hand over the device, please send me your handover code from the DigiDaan log page.";
+ const m2="Hello, I’m "+h.donor+", the DigiDaan donor of the "+TL[h.dtype]+" matched to "+h.stu+". "+(h.md==="drop"?"I can drop it at "+h.pt:"I can meet at a public place in "+h.area)+". Please confirm a time.";
+ const m3="Hello, I’m "+h.donor+", the DigiDaan donor. My handover code for the "+TL[h.dtype]+" going to "+h.stu+" is "+h.code+". Please enter it on the DigiDaan log page to confirm you received the device.";
+ let st='<div class="stepper">';["Matched","Contact","Meet","Received"].forEach((l,i)=>{st+=(i?'<s class="'+(i<n?"d":"")+'"></s>':"")+'<i class="'+(i<n?"d":"")+'" data-l="'+l+'">'+(i<n?"\u2713":i+1)+'</i>'});st+="</div>";
+ let b='<div class="item col"><div style="display:flex;justify-content:space-between;gap:8px"><div><b>'+esc(TL[h.dtype])+'</b> → <b>'+esc(h.stu)+'</b>, '+esc(h.org)+'<br><small>Donor '+esc(h.donor)+'</small></div><span class="pill '+(done?"d":"m")+'">'+(done?"Handed over":h.status==="met"?"Met":"Scheduled")+'</span></div><div class="steps">';
+ b+='<div><b>1. Contact</b><div class="acts" style="margin-top:6px">'+mb(h.dph,m1,"btn sm","Coordinator: message donor")+mb(h.cph,m2,"btn alt sm","Donor: message coordinator")+'</div></div>';
+ b+='<div><b>2. Meet</b><br>'+esc(h.pt)+' · '+esc(h.sl)+'<br><small>'+(h.md==="drop"?"Donor drops the device at the school or NGO.":"Collect from a public place in "+esc(h.area)+".")+'</small>'+(h.status==="scheduled"?'<div class="acts" style="margin-top:6px"><button class="btn alt sm" data-hm="'+id+'">Mark as met</button></div>':'<br><small>✔ Meeting confirmed</small>')+'</div>';
+ const met=h.status==="met";
+ if(!done)b+='<div><b>3. Verify and receive</b><br><small>Donor: when you hand over the device, send the 4-digit code to the coordinator.</small><div class="acts" style="margin-top:6px">'+mb(h.cph,m3,"btn alt sm","Donor: send handover code")+'</div><small style="display:block;margin-top:8px">Coordinator: enter the code the donor sends you on WhatsApp.</small><div class="acts" style="margin-top:6px"><input type="text" id="hc'+id+'" inputmode="numeric" maxlength="4" placeholder="4-digit code" style="width:130px"'+(met?"":" disabled")+'><button class="btn sm" data-hv="'+id+'"'+(met?"":" disabled")+'>Verify and mark received</button></div>'+(met?"":'<small style="display:block;margin-top:6px">Step 2 first: tap “Mark as met” once the meeting happens.</small>')+'</div>';
+ else b+='<div><b>3. Received</b> ✔<br><small>Receipt DD-'+esc(id.slice(-5))+': '+esc(TL[h.dtype])+' from '+esc(h.donor)+' received by '+esc(h.org)+' on '+esc(h.done||"")+', code verified.</small>'+(h.fb?'<br><small>Feedback: “'+esc(h.fb)+'”</small>':'<div class="acts" style="margin-top:6px"><input type="text" id="hf'+id+'" placeholder="Student feedback" style="width:170px"><button class="btn sm" data-hf="'+id+'">Save</button></div>')+'</div>';
+ return b+'</div></div>'}
 function render(){
  const av=D.filter(d=>d.st==="available").length,op=N.filter(n=>n.st==="open").length;
  $("s1").textContent=av;$("s2").textContent=op;$("s3").textContent=D.filter(d=>d.st!=="available").length;$("s4").textContent=D.filter(d=>d.st==="given").length;
- $("auth").innerHTML=U?'<small style="color:var(--mut)">'+esc(U.displayName||U.email)+'</small><button class="btn alt sm" data-o="1">Sign out</button>':'<button class="btn sm" data-i="1">Coordinator sign-in</button>';
- $("dl").innerHTML=D.length?D.map(d=>'<div class="item"><div><b>'+esc(TL[d.type])+'</b>, '+d.age+' yr · '+esc(d.area)+'<br><small>by '+esc(d.name)+' · condition '+d.ck.filter(Boolean).length+'/5 · '+(d.mode==="drop"?"donor can drop at school/NGO":"pickup in "+esc(d.area))+' · '+esc(d.slot||"")+'</small></div><div class="acts"><span class="pill '+(d.st==="available"?"":d.st==="given"?"d":"m")+'">'+(d.st==="available"?"Available":d.st==="given"?"Handed over":"Matched")+'</span>'+(U&&d.st==="available"?'<button class="btn alt sm" data-rd="'+d.id+'">Remove</button>':"")+'</div></div>').join(""):gate("No devices listed yet.");
- renderAdmin();$("nl").innerHTML=N.length?N.map(n=>'<div class="item"><div><b>'+esc(n.org)+'</b> · '+esc(n.stu)+(n.cls?" ("+esc(n.cls)+")":"")+'<br><small>'+esc(n.area)+' · '+esc(PL[n.purpose])+' · wants '+(n.pref==="any"?"any device":esc(TL[n.pref]))+' · urgency '+n.urg+'/5</small><br>'+vbadge(n)+'</div><div class="acts"><span class="pill '+(n.st==="open"?"":"m")+'">'+(n.st==="open"?"Open":"Matched")+'</span>'+(U&&n.st==="open"?'<button class="btn alt sm" data-rn="'+n.id+'">Remove</button>':"")+'</div></div>').join(""):gate("No needs registered yet.");
- if(!U){$("needform").innerHTML="<h2>Register a need</h2>"+gate("Coordinators from schools and NGOs must sign in to register a need. Use the button at the top.");$("mbox").innerHTML=gate("Sign in as a coordinator to run matching.");$("lbox").innerHTML=gate("Sign in as a coordinator to view the handover log.");return}
- if(!$("nf"))needForm();
+ $("auth").innerHTML=(U&&!U.isAnonymous)?'<small style="color:var(--mut)">'+esc(U.displayName||U.email)+(isAdm()?" (admin)":" (not an admin account)")+'</small><button class="btn alt sm" data-o="1">Sign out</button>':'<button class="btn sm" data-i="1">Admin sign-in</button>';
+ $("dl").innerHTML=D.length?D.map(d=>'<div class="item"><div><b>'+esc(TL[d.type])+'</b>, '+d.age+' yr · '+esc(d.area)+'<br><small>by '+esc(d.name)+' · condition '+d.ck.filter(Boolean).length+'/5 · '+(d.mode==="drop"?"donor can drop at school/NGO":"pickup in "+esc(d.area))+' · '+esc(d.slot||"")+'</small></div><div class="acts"><span class="pill '+(d.st==="available"?"":d.st==="given"?"d":"m")+'">'+(d.st==="available"?"Available":d.st==="given"?"Handed<br>over":"Matched")+'</span>'+((isAdm()||mine(d.owner))&&d.st==="available"?'<button class="btn alt sm" data-rd="'+d.id+'">Remove</button>':"")+'</div></div>').join(""):gate("No devices listed yet.");
+ renderAdmin();renderMine();$("nl").innerHTML=N.length?N.map(n=>'<div class="item"><div><b>'+esc(n.org)+'</b> · '+esc(n.stu)+(n.cls?" ("+esc(n.cls)+")":"")+'<br><small>'+esc(n.area)+' · '+esc(PL[n.purpose])+' · wants '+(n.pref==="any"?"any device":esc(TL[n.pref]))+' · urgency '+n.urg+'/5</small><br>'+vbadge(n)+'</div><div class="acts"><span class="pill '+(n.st==="open"?"":"m")+'">'+(n.st==="open"?"Open":"Matched")+'</span>'+((isAdm()||mine(n.owner))&&n.st==="open"?'<button class="btn alt sm" data-rn="'+n.id+'">Remove</button>':"")+'</div></div>').join(""):gate("No needs registered yet.");
+ const HL=Object.keys(H).map(id=>({...H[id],id}));$("lbox").innerHTML=HL.length?HL.map(logCard).join(""):gate("No handovers yet. Once the admin confirms a match, it appears here.");
+ if(!isAdm()){$("mbox").innerHTML=gate("Admin sign-in required to run matching.");return}
  $("mbox").innerHTML='<div class="acts"><button class="btn" id="run">Run matching</button><button class="btn alt" id="all">Confirm all</button></div><div style="margin-top:8px">'+(props.length?props.map((p,i)=>{const d=dev(p.d),n=nd(p.n);return d&&n?'<div class="item"><div><b>'+esc(TL[d.type])+'</b> from '+esc(d.name)+' ('+esc(d.area)+') → <b>'+esc(n.stu)+'</b>, '+esc(n.org)+' ('+esc(n.area)+')<br><small>'+esc(PL[n.purpose])+' · urgency '+p.s.urg+' + fit '+p.s.fit+' + locality '+p.s.loc+' = <b>'+p.s.total+'/13</b></small><div class="bar"><i style="width:'+Math.round(p.s.total/13*100)+'%"></i></div></div><button class="btn sm" data-c="'+i+'">Confirm</button></div>':""}).join(""):gate("No suggestions yet. Tap “Run matching”."))+'</div>';
- $("lbox").innerHTML=L.length?L.map(logCard).join(""):gate("No handovers yet. Confirm a match to start the log.");
 }
 function needForm(){
- $("needform").innerHTML='<h2>Register a student’s need</h2><p class="sub">Sign in to register. Students or parents can register too. Use initials, never the full name.</p><form id="nf"><div class="row"><div><label>School / NGO</label><input type="text" id="no" maxlength="40" required></div><div><label>Student initials</label><input type="text" id="ns" maxlength="6" placeholder="e.g. A.K." required></div></div><div class="row"><div><label>Locality</label><select id="na">'+AREAS.map(a=>"<option>"+a+"</option>").join("")+'</select></div><div><label>Class</label><input type="text" id="nc" maxlength="20" placeholder="e.g. 9th, FY BSc"></div></div><div class="row"><div><label>Main purpose</label><select id="np"><option value="classes">Online classes</option><option value="coding">Coding / programming</option><option value="exams">Exam preparation</option><option value="general">General study</option></select></div><div><label>Device wanted</label><select id="nd"><option value="any">Any suitable device</option><option value="laptop">Laptop only</option><option value="phone">Smartphone only</option><option value="tablet">Tablet only</option></select></div></div><div class="row"><div><label>Coordinator mobile (private)</label><input type="text" id="nph" inputmode="numeric" maxlength="10" required></div><div><label>Available slot</label><select id="nsl"><option>Weekday evenings</option><option>Weekend mornings</option><option>Weekend evenings</option></select></div></div><label>Who is registering?</label><select id="nwho"><option value="org">School or NGO</option><option value="stu">Student or parent</option></select><div class="row"><div><label>Institution type</label><select id="nty"><option>School</option><option>NGO</option></select></div><div><label>Registration ID</label><input type="text" id="nreg" maxlength="24" placeholder="UDISE+ or NGO Darpan ID" required></div></div><label id="ncl" style="display:none;font-weight:500;align-items:center;gap:8px;margin-top:10px"><input type="checkbox" id="nco" style="width:auto"> A parent or guardian knows about this request</label><div class="note" style="margin:6px 0 0">Requests are checked before matching. Your institution is checked on Google Maps and its ID is reviewed by an admin. Needs are matched only after approval.</div><label>Handover point (school/NGO address)</label><input type="text" id="nad" maxlength="70" placeholder="e.g. School office, Sector 19, Nerul" required><label>Urgency: <span id="uv">3</span> / 5</label><input type="range" id="nu" min="1" max="5" value="3" style="width:100%;accent-color:var(--teal)"><button class="btn" type="submit">Register need</button></form>';
+ $("needform").innerHTML='<h2>Register a student’s need</h2><p class="sub">Open to everyone: schools, NGOs, students and parents. Use initials, never the full name.</p><form id="nf"><div class="row"><div><label>School / NGO</label><input type="text" id="no" maxlength="40" required></div><div><label>Student initials</label><input type="text" id="ns" maxlength="6" placeholder="e.g. A.K." required></div></div><div class="row"><div><label>Locality</label><select id="na">'+AREAS.map(a=>"<option>"+a+"</option>").join("")+'</select></div><div><label>Class</label><input type="text" id="nc" maxlength="20" placeholder="e.g. 9th, FY BSc"></div></div><div class="row"><div><label>Main purpose</label><select id="np"><option value="classes">Online classes</option><option value="coding">Coding / programming</option><option value="exams">Exam preparation</option><option value="general">General study</option></select></div><div><label>Device wanted</label><select id="nd"><option value="any">Any suitable device</option><option value="laptop">Laptop only</option><option value="phone">Smartphone only</option><option value="tablet">Tablet only</option></select></div></div><div class="row"><div><label>Coordinator mobile (private)</label><input type="text" id="nph" inputmode="numeric" maxlength="10" required></div><div><label>Available slot</label><select id="nsl"><option>Weekday evenings</option><option>Weekend mornings</option><option>Weekend evenings</option></select></div></div><label>Who is registering?</label><select id="nwho"><option value="org">School or NGO</option><option value="stu">Student or parent</option></select><div class="row"><div><label>Institution type</label><select id="nty"><option>School</option><option>NGO</option></select></div><div><label>Registration ID</label><input type="text" id="nreg" maxlength="24" placeholder="UDISE+ or NGO Darpan ID" required></div></div><label id="ncl" style="display:none;font-weight:500;align-items:center;gap:8px;margin-top:10px"><input type="checkbox" id="nco" style="width:auto"> A parent or guardian knows about this request</label><div class="note" style="margin:6px 0 0">Requests are checked before matching. Your institution is checked on Google Maps and its ID is reviewed by an admin. Needs are matched only after approval.</div><label>Handover point (school/NGO address)</label><input type="text" id="nad" maxlength="70" placeholder="e.g. School office, Sector 19, Nerul" required><label>Urgency: <span id="uv">3</span> / 5</label><input type="range" id="nu" min="1" max="5" value="3" style="width:100%;accent-color:var(--teal)"><input type="text" id="hp2" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;opacity:0;height:0"><button class="btn" type="submit">Register need</button></form>';
  $("nu").oninput=e=>$("uv").textContent=e.target.value;
- $("nf").onsubmit=async e=>{e.preventDefault();const ph=$("nph").value.trim();if(!/^[6-9]\d{9}$/.test(ph))return toast("Enter a valid 10-digit mobile number");if($("nwho").value==="stu"&&!$("nco").checked)return toast("A parent or guardian must know about this request");const id=uid();
-  try{await setDoc(doc(db,"needs",id),{org:$("no").value.trim(),stu:$("ns").value.trim(),area:$("na").value,cls:$("nc").value.trim(),purpose:$("np").value,pref:$("nd").value,urg:+$("nu").value,st:"open",ver:"pending",who:$("nwho").value,typ:$("nwho").value==="stu"?"Student":$("nty").value,reg:$("nwho").value==="stu"?"":$("nreg").value.trim(),addr:$("nad").value.trim(),slot:$("nsl").value,by:U.email});await setDoc(doc(db,"contacts","need_"+id),{ph});e.target.reset();$("uv").textContent=3;toast("Need registered")}catch(x){toast("Couldn’t save. Check sign-in and rules.")}};
+ $("nf").onsubmit=async e=>{e.preventDefault();if($("hp2").value)return;const ph=$("nph").value.trim();if(!/^[6-9]\d{9}$/.test(ph))return toast("Enter a valid 10-digit mobile number");if($("nwho").value==="stu"&&!$("nco").checked)return toast("A parent or guardian must know about this request");if(!db)return toast("Database not set up yet");if(!U)return toast("Connecting… please try again in a moment");const id=uid();
+  try{await setDoc(doc(db,"needs",id),{owner:U.uid,org:$("no").value.trim(),stu:$("ns").value.trim(),area:$("na").value,cls:$("nc").value.trim(),purpose:$("np").value,pref:$("nd").value,urg:+$("nu").value,st:"open",ver:"pending",who:$("nwho").value,typ:$("nwho").value==="stu"?"Student":$("nty").value,reg:$("nwho").value==="stu"?"":$("nreg").value.trim(),addr:$("nad").value.trim(),slot:$("nsl").value,by:"public"});await setDoc(doc(db,"contacts","need_"+id),{ph,owner:U.uid});PREV[id]="pending";saveMy();e.target.reset();$("uv").textContent=3;toast("Request submitted. The admin will soon verify and approve your need.");render()}catch(x){toast("Couldn’t save. Please try again.")}};
 }
 
 document.addEventListener("click",async e=>{
@@ -354,32 +404,34 @@ document.addEventListener("click",async e=>{
  if(t.id==="run")runMatch();
  if(t.id==="all"){if(!props.length)return toast("Run matching first");for(const p of [...props])await confirmM(p);toast("All matches confirmed");show("log")}
  if(ds.c!==undefined){await confirmM(props[+ds.c]);render()}
- if(ds.rd)await deleteDoc(doc(db,"devices",ds.rd));
- if(ds.rn)await deleteDoc(doc(db,"needs",ds.rn));
+ if(ds.rd){if(!confirm("Remove this device listing?"))return;await deleteDoc(doc(db,"devices",ds.rd));try{await deleteDoc(doc(db,"contacts","dev_"+ds.rd))}catch(_){}toast("Listing removed")}
+ if(ds.rn){if(!confirm("Remove this request?"))return;await deleteDoc(doc(db,"needs",ds.rn));try{await deleteDoc(doc(db,"contacts","need_"+ds.rn))}catch(_){}delete PREV[ds.rn];saveMy();toast("Request removed")}
  if(ds.ap)await updateDoc(doc(db,"needs",ds.ap),{ver:"yes"});
  if(ds.rj)await deleteDoc(doc(db,"needs",ds.rj));
- if(ds.m){await updateDoc(doc(db,"log",ds.m),{st:"met"});toast("Meeting confirmed")}
- if(ds.v){const l=L.find(x=>x.id===ds.v),i=$("vc"+ds.v);if(i.value.trim()!==l.code)return toast("Code doesn’t match. Ask the donor to check it.");await updateDoc(doc(db,"log",l.id),{st:"done",done:new Date().toLocaleDateString("en-IN")});await updateDoc(doc(db,"devices",l.d),{st:"given"});toast("Verified. Device marked as received")}
- if(ds.f){const v=$("fb"+ds.f).value.trim();if(v){await updateDoc(doc(db,"log",ds.f),{fb:v});toast("Feedback saved")}}
+ if(ds.np)toast("This number isn’t saved for this match yet. Ask the admin to sign in once so it can be filled in.");
+ if(ds.hm){await updateDoc(doc(db,"handovers",ds.hm),{status:"met"});toast("Meeting confirmed")}
+ if(ds.hv){const h=H[ds.hv],i=$("hc"+ds.hv);if(!h||!i)return;if(h.status!=="met")return toast("Mark the meeting as met first");if(i.value.trim()!==h.code)return toast("Code doesn’t match. Ask the donor to check it.");await updateDoc(doc(db,"handovers",ds.hv),{status:"done",done:new Date().toLocaleDateString("en-IN")});await updateDoc(doc(db,"devices",h.dev),{st:"given"});toast("Verified. Device marked as received")}
+ if(ds.hf){const v=$("hf"+ds.hf).value.trim();if(v){await updateDoc(doc(db,"handovers",ds.hf),{fb:v});toast("Feedback saved")}}
  }catch(x){toast("Action failed. "+(x.code||"Please try again."))}
 });
 
 function boot(){
  AREAS.forEach(a=>$("da").insertAdjacentHTML("beforeend","<option>"+a+"</option>"));
- $("df").onsubmit=async e=>{e.preventDefault();
+ $("df").onsubmit=async e=>{e.preventDefault();if($("hp1").value)return;
   const ck=[1,2,3,4,5].map(i=>$("c"+i).checked),ph=$("dp").value.trim();
   if(!ck[0])return toast("The device must power on to be listed");if(!ck[4])return toast("Please factory reset the device first");
   if(!/^[6-9]\d{9}$/.test(ph))return toast("Enter a valid 10-digit mobile number");
-  if(!db)return toast("Database not set up yet");const id=uid();
-  try{await setDoc(doc(db,"devices",id),{name:$("dn").value.trim(),area:$("da").value,type:$("dt").value,age:+$("dg").value,ck,st:"available",mode:$("dm").value,slot:$("ds").value});await setDoc(doc(db,"contacts","dev_"+id),{ph});e.target.reset();$("dg").value=3;toast("Device listed. Thank you!")}catch(x){toast("Couldn’t save. Please try again.")}};
- render();
+  if(!db)return toast("Database not set up yet");if(!U)return toast("Connecting… please try again in a moment");const id=uid();
+  try{await setDoc(doc(db,"devices",id),{owner:U.uid,name:$("dn").value.trim(),area:$("da").value,type:$("dt").value,age:+$("dg").value,ck,st:"available",mode:$("dm").value,slot:$("ds").value});await setDoc(doc(db,"contacts","dev_"+id),{ph,owner:U.uid});e.target.reset();$("dg").value=3;toast("Device listed. Thank you!")}catch(x){toast("Couldn’t save. Please try again.")}};
+ needForm();render();
  if(/PASTE/.test(firebaseConfig.apiKey)){$("cfgwarn").style.display="block";return}
  const app=initializeApp(firebaseConfig);db=getFirestore(app);auth=getAuth(app);
  onSnapshot(collection(db,"devices"),s=>{D=s.docs.map(x=>({...x.data(),id:x.id}));render()},()=>{});
+ onSnapshot(collection(db,"handovers"),s=>{H={};s.docs.forEach(x=>H[x.id]=x.data());render()},()=>{});
  onSnapshot(collection(db,"needs"),s=>{N=s.docs.map(x=>({...x.data(),id:x.id}));render()},()=>{});
  onAuthStateChanged(auth,u=>{U=u;unsubs.forEach(f=>f());unsubs=[];L=[];C={};
-  if(u){unsubs.push(onSnapshot(collection(db,"log"),s=>{L=s.docs.map(x=>({...x.data(),id:x.id})).sort((a,b)=>b.id.localeCompare(a.id));render()},()=>{}));
-        unsubs.push(onSnapshot(collection(db,"contacts"),s=>{C={};s.docs.forEach(x=>C[x.id]=x.data().ph);render()},()=>{}))}
+  if(!u){signInAnonymously(auth).catch(()=>{});}
+  if(u&&!u.isAnonymous&&ADMINS.includes(u.email)){unsubs.push(onSnapshot(collection(db,"contacts"),s=>{C={};s.docs.forEach(x=>C[x.id]=x.data().ph);Object.keys(H).forEach(id=>{const h=H[id],u={};if(!h.cph&&C["need_"+id])u.cph=C["need_"+id];if(!h.dph&&h.dev&&C["dev_"+h.dev])u.dph=C["dev_"+h.dev];if(Object.keys(u).length)updateDoc(doc(db,"handovers",id),u).catch(()=>{})});render()},()=>{}))}
   render()});
 }
 boot();
@@ -460,6 +512,76 @@ document.addEventListener("change",function(e){if(e.target.id!=="nwho")return;va
  g("nty").parentElement.parentElement.style.display=s?"none":"";g("ncl").style.display=s?"flex":"none";g("nreg").required=!s;
  g("no").previousElementSibling.textContent=s?"School or college":"School / NGO";g("ns").previousElementSibling.textContent=s?"Your initials":"Student initials"});
 document.addEventListener("reset",function(e){if(e.target.id==="nf")setTimeout(function(){var w=document.getElementById("nwho");if(w)w.dispatchEvent(new Event("change",{bubbles:true}))},0)});
+</script>
+<script>
+/* Drifting aurora particles */
+(function(){
+ var cv=document.createElement("canvas");cv.id="pf";cv.setAttribute("aria-hidden","true");document.body.insertBefore(cv,document.body.firstChild);
+ var x=cv.getContext("2d"),W=0,H=0,D=1,P=[],run=false,mx=-999,my=-999,sy=0,still=matchMedia("(prefers-reduced-motion:reduce)").matches;
+ var COL=[[44,196,184],[167,139,250],[111,139,232],[244,162,89],[230,238,245]],SP=[];
+ COL.forEach(function(c,i){var k=document.createElement("canvas"),q=k.getContext("2d"),r=64;k.width=k.height=r*2;
+  var g=q.createRadialGradient(r,r,0,r,r,r);g.addColorStop(0,"rgba("+c+",1)");g.addColorStop(.18,"rgba("+c+",.55)");g.addColorStop(.5,"rgba("+c+",.14)");g.addColorStop(1,"rgba("+c+",0)");q.fillStyle=g;q.fillRect(0,0,r*2,r*2);SP.push(k)});
+ function R(a,b){return a+Math.random()*(b-a)}
+ function make(){var n=Math.min(95,Math.round(W*H/16000));if(W<640)n=Math.min(n,38);P=[];
+  for(var i=0;i<n;i++){var z=R(.25,1);P.push({x:R(0,W),y:R(0,H),z:z,r:R(1.2,3.2)*(.55+z),c:Math.random()<.42?0:Math.random()<.5?1:Math.random()<.5?2:Math.random()<.6?3:4,
+   vx:R(-.12,.12)*z,vy:R(-.2,-.04)*z,ph:R(0,6.28),fs:R(.4,1.2),wb:R(8,26),a:R(.35,.9)})}}
+ function size(){D=Math.min(2,devicePixelRatio||1);W=innerWidth;H=innerHeight;cv.width=W*D;cv.height=H*D;x.setTransform(D,0,0,D,0,0);make()}
+ size();addEventListener("resize",size);
+ addEventListener("pointermove",function(e){mx=e.clientX;my=e.clientY},{passive:true});
+ addEventListener("pointerleave",function(){mx=my=-999});
+ addEventListener("scroll",function(){sy=scrollY},{passive:true});
+ var last=0;
+ function draw(now,still){
+  var dt=Math.min(.05,(now-last)/1000||.016);last=now;var t=now/1000;
+  x.clearRect(0,0,W,H);x.globalCompositeOperation="lighter";
+  var LR=W<640?40:55,L2=LR*LR;
+  for(var i=0;i<P.length;i++){var p=P[i];
+   if(!still){p.x+=(p.vx*60+Math.sin(t*.35+p.ph)*.18*p.z)*dt*3;p.y+=(p.vy*60)*dt*3;
+    var dx=p.x-mx,dy=p.y-my,d2=dx*dx+dy*dy;if(d2<19600){var f=(1-d2/19600)*.9;p.x+=dx/(Math.sqrt(d2)+1)*f;p.y+=dy/(Math.sqrt(d2)+1)*f}
+    if(p.y<-20){p.y=H+20;p.x=R(0,W)}if(p.x<-20)p.x=W+20;if(p.x>W+20)p.x=-20}
+   var py=p.y+(still?0:-sy*.06*p.z);
+   var tw=still?1:.65+.35*Math.sin(t*p.fs+p.ph),s=p.r*7;
+   x.globalAlpha=p.a*tw*(.55+.45*p.z);x.drawImage(SP[p.c],p.x-s/2,py-s/2,s,s);p._y=py}
+  x.lineWidth=.8;
+  for(i=0;i<P.length;i++){var a=P[i];for(var j=i+1;j<P.length;j++){var b=P[j],ax=a.x-b.x,ay=a._y-b._y,dd=ax*ax+ay*ay;
+   if(dd<L2){x.globalAlpha=(1-dd/L2)*.035*Math.min(a.z,b.z);var c=COL[a.c];x.strokeStyle="rgb("+c[0]+","+c[1]+","+c[2]+")";x.beginPath();x.moveTo(a.x,a._y);x.lineTo(b.x,b._y);x.stroke()}}}
+  x.globalAlpha=1;x.globalCompositeOperation="source-over"}
+ function loop(now){if(!run)return;draw(now,false);requestAnimationFrame(loop)}
+ function start(){if(run)return;if(still){draw(performance.now(),true);return}run=true;last=performance.now();requestAnimationFrame(loop)}
+ document.addEventListener("visibilitychange",function(){if(document.hidden)run=false;else if(document.body.classList.contains("ready")&&!still){run=false;start()}});
+ if(document.body.classList.contains("ready"))start();
+ else new MutationObserver(function(m,o){if(document.body.classList.contains("ready")){o.disconnect();start()}}).observe(document.body,{attributes:true,attributeFilter:["class"]});
+})();
+</script>
+<script>
+/* Splash liquid aurora (WebGL, falls back to CSS clouds) */
+(function(){
+ var sp=document.getElementById("splash"),bg=sp&&sp.querySelector(".sbg");if(!bg)return;
+ var cv=document.createElement("canvas"),gl=cv.getContext("webgl",{antialias:false,alpha:false,powerPreference:"low-power"});if(!gl)return;
+ var FS="precision highp float;uniform vec2 r;uniform float t;"+
+ "float h(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}"+
+ "float n(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);return mix(mix(h(i),h(i+vec2(1.,0.)),f.x),mix(h(i+vec2(0.,1.)),h(i+vec2(1.,1.)),f.x),f.y);}"+
+ "float fbm(vec2 p){float v=0.,a=.5;for(int i=0;i<5;i++){v+=a*n(p);p=p*2.03+vec2(1.7,9.2);a*=.5;}return v;}"+
+ "void main(){vec2 uv=gl_FragCoord.xy/r;vec2 p=(gl_FragCoord.xy-.5*r)/min(r.x,r.y);float tt=t*.11;"+
+ "vec2 q=vec2(fbm(p*1.4+tt),fbm(p*1.4-tt+3.1));"+
+ "vec2 w=vec2(fbm(p*1.6+2.*q+vec2(1.7,9.2)+tt*1.3),fbm(p*1.6+2.*q+vec2(8.3,2.8)-tt));"+
+ "float f=fbm(p*1.5+2.5*w);"+
+ "vec3 teal=vec3(.17,.77,.72),vio=vec3(.65,.55,.98),amb=vec3(.96,.64,.35);vec3 c=vec3(.015,.04,.08);"+
+ "c=mix(c,teal*.85,smoothstep(.25,.78,f)*.5);c=mix(c,vio,smoothstep(.35,.9,length(q))*.4);c+=amb*smoothstep(.5,.95,w.x*w.y*2.4)*.2;"+
+ "float rb=exp(-abs(p.y*2.2+sin(p.x*2.2+t*.45)*.45+f*.9-.15)*7.)*.38;c+=mix(teal,vio,uv.x)*rb;"+
+ "float rb2=exp(-abs(p.y*2.6+sin(p.x*1.7-t*.3+1.5)*.5+f*1.1+.5)*9.)*.22;c+=mix(vio,amb,uv.x)*rb2;"+
+ "c*=1.-.6*dot(p*.72,p*.72);c+=(h(gl_FragCoord.xy+t)-.5)*.016;gl_FragColor=vec4(c,1.);}";
+ function sh(k,src){var x=gl.createShader(k);gl.shaderSource(x,src);gl.compileShader(x);if(!gl.getShaderParameter(x,gl.COMPILE_STATUS))throw gl.getShaderInfoLog(x);return x}
+ var pr=gl.createProgram();
+ try{gl.attachShader(pr,sh(gl.VERTEX_SHADER,"attribute vec2 p;void main(){gl_Position=vec4(p,0.,1.)}"));gl.attachShader(pr,sh(gl.FRAGMENT_SHADER,FS));gl.linkProgram(pr);if(!gl.getProgramParameter(pr,gl.LINK_STATUS))throw 1;gl.useProgram(pr)}catch(e){return}
+ cv.id="sbw";bg.insertBefore(cv,bg.firstChild);sp.classList.add("gl");
+ var b=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,b);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,1,-1,-1,1,1,1]),gl.STATIC_DRAW);
+ var l=gl.getAttribLocation(pr,"p");gl.enableVertexAttribArray(l);gl.vertexAttribPointer(l,2,gl.FLOAT,false,0,0);
+ var ur=gl.getUniformLocation(pr,"r"),ut=gl.getUniformLocation(pr,"t");
+ function size(){var k=.55;cv.width=Math.max(2,Math.round(innerWidth*k));cv.height=Math.max(2,Math.round(innerHeight*k));gl.viewport(0,0,cv.width,cv.height)}
+ size();addEventListener("resize",size);var t0=performance.now();
+ (function f(now){if(!document.getElementById("splash"))return;gl.uniform2f(ur,cv.width,cv.height);gl.uniform1f(ut,(now-t0)/1000+8);gl.drawArrays(gl.TRIANGLE_STRIP,0,4);requestAnimationFrame(f)})(t0);
+})();
 </script>
 </body>
 </html>
