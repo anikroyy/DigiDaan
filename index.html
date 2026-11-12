@@ -263,6 +263,53 @@ details p{margin:8px 0 0;color:var(--mut);font-size:14px;animation:up .5s backwa
 @keyframes sbwi{to{opacity:1}}
 @keyframes sbgm{to{background-position:0 52px,52px 0}}
 @keyframes sbz{to{transform:rotate(360deg)}}
+.hero2 .btn:not(.alt){box-shadow:0 0 22px rgba(44,196,184,.55)}
+.hero2 .btn.pop{animation:heroGlow .9s ease}
+@keyframes heroGlow{0%{box-shadow:0 0 0 0 rgba(44,196,184,.85);transform:scale(.95)}100%{box-shadow:0 0 22px 18px rgba(44,196,184,0)}}
+#bg3d.x{z-index:50;pointer-events:auto;cursor:zoom-out}
+#bgtip{position:fixed;left:0;top:0;z-index:40;pointer-events:none;opacity:0;transition:opacity .2s;padding:6px 12px;border-radius:999px;background:rgba(44,196,184,.95);color:#04232b;font:700 12px system-ui,sans-serif;white-space:nowrap;box-shadow:0 6px 18px rgba(0,0,0,.35)}
+#bgov{position:fixed;inset:0;z-index:49;background:rgba(6,14,24,.8);opacity:0;pointer-events:none;transition:opacity .45s}
+#bgov.x{opacity:1}
+#bg3d{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+
+body.dmo{overflow:hidden}
+#dm{position:fixed;inset:0;z-index:200;background:rgba(5,12,20,.9);backdrop-filter:blur(6px);display:none;place-items:center}
+#dm.on{display:grid}
+.dm-x{position:absolute;top:14px;right:18px;z-index:3}
+.dm-lap{width:min(80vw,calc(80vh*1.62));animation:dmin .5s ease}
+@keyframes dmin{from{opacity:0;transform:scale(.94)}}
+.dm-lid{background:#182739;border-radius:18px 18px 6px 6px;padding:2.2% 2.2% 2.6%;box-shadow:0 30px 80px rgba(0,0,0,.6),0 0 0 2px #2a3d52}
+.dm-base{height:14px;margin:0 -4%;background:linear-gradient(#2a3d52,#142230);border-radius:0 0 18px 18px;position:relative}
+.dm-base::after{content:"";position:absolute;left:50%;top:0;width:16%;height:6px;background:#0d1a27;border-radius:0 0 8px 8px;transform:translateX(-50%)}
+.dm-scr{aspect-ratio:16/10;background:linear-gradient(160deg,#0d1b2a,#10243a 55%,#0f2a30);border-radius:8px;overflow:hidden;position:relative;display:flex;flex-direction:column;font:clamp(9px,1.2vw,17px)/1.4 system-ui,sans-serif;color:#e6eef5}
+.dm-hd{display:flex;align-items:center;gap:.7em;padding:.7em 1em;background:rgba(255,255,255,.06)}
+.dm-lg{width:1.7em;height:1.7em;border-radius:.5em;background:linear-gradient(135deg,#2cc4b8,#a78bfa);display:grid;place-items:center;color:#04232b;font-weight:800}
+.dm-sc{margin-left:auto;color:#9fb4c7}
+.dm-st{flex:1;padding:1em 1.4em;overflow:hidden;display:flex;flex-direction:column;gap:.7em;justify-content:center}
+.dm-st>*{animation:dmup .5s ease backwards}
+@keyframes dmup{from{opacity:0;transform:translateY(.8em)}}
+.dm-cap{padding:.8em 1.2em;background:rgba(44,196,184,.14);border-top:1px solid rgba(44,196,184,.35);min-height:4.2em}
+.dm-cap b{display:block;font-size:1.15em;color:#2cc4b8}
+.dm-dots{display:flex;gap:.4em;margin-top:.4em}.dm-dots i{width:1.6em;height:.35em;border-radius:9px;background:rgba(255,255,255,.2)}.dm-dots i.on{background:#2cc4b8}
+.dm-tabs{display:flex;gap:.5em}.dm-tabs span{flex:1;text-align:center;padding:.4em;border-radius:99px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.05)}.dm-tabs span.on{background:#2cc4b8;color:#04232b;font-weight:700}
+.dm-c{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:1em;padding:1em;display:flex;flex-direction:column;gap:.6em}
+.dm-c h4{margin:0;font-size:1.2em}
+.dm-g{display:grid;grid-template-columns:1fr 1fr;gap:.6em}
+.dm-r small{display:block;color:#9fb4c7;margin-bottom:.2em}
+.dmf{min-height:2em;padding:.3em .7em;border-radius:.6em;border:1px solid rgba(255,255,255,.2);background:#0f2132}
+.dmf.foc{border-color:#2cc4b8;box-shadow:0 0 0 2px rgba(44,196,184,.3)}
+.dmb{align-self:flex-start;background:#2cc4b8;color:#04232b;font-weight:700;padding:.5em 1em;border-radius:.7em}
+.dmb.hit,.dmf.hit{animation:dmhit .6s ease}
+@keyframes dmhit{50%{transform:scale(.94);box-shadow:0 0 0 .6em rgba(44,196,184,.4)}}
+.dm-it{display:flex;justify-content:space-between;align-items:center;gap:1em}
+.rv{display:none}.rv.on{display:block;animation:dmup .5s ease}
+.dm-ok{background:rgba(62,207,142,.18);border:1px solid #3ecf8e;color:#8ff0c0;padding:.5em .8em;border-radius:.7em}
+.dm-wa{background:#0b4a3d;border-radius:.8em;padding:.6em .9em;max-width:80%}
+.dm-pl{display:inline-block;padding:.2em .8em;border-radius:99px;background:rgba(244,162,89,.2);color:#f4a259;font-weight:700}.dm-pl.g{background:rgba(62,207,142,.2);color:#3ecf8e}
+.dm-done{text-align:center;font-size:1.3em;display:flex;flex-direction:column;gap:.3em;align-items:center}.dm-done i{font-style:normal;width:2.4em;height:2.4em;border-radius:50%;background:#3ecf8e;color:#04232b;display:grid;place-items:center;font-size:1.6em;font-weight:800}
+.dm-ch{display:grid;grid-template-columns:1fr 1fr;gap:1em}.dm-ch button{border:1px solid rgba(44,196,184,.5);background:rgba(44,196,184,.1);color:#e6eef5;border-radius:1em;padding:1.4em 1em;font:inherit;cursor:pointer;transition:transform .2s,background .2s}.dm-ch button:hover{transform:translateY(-3px);background:rgba(44,196,184,.25)}.dm-ch b{display:block;font-size:1.4em;margin-bottom:.3em}
+.dm-end{display:flex;gap:.6em;flex-wrap:wrap;justify-content:center}.dm-end button{border:0;border-radius:.7em;padding:.6em 1.1em;font:700 1em system-ui;cursor:pointer;background:#2cc4b8;color:#04232b}.dm-end button.a{background:rgba(255,255,255,.12);color:#e6eef5}
+.dm-cur{position:absolute;left:0;top:0;width:1.5em;z-index:5;pointer-events:none;transition:transform .7s cubic-bezier(.4,0,.2,1);filter:drop-shadow(0 2px 3px rgba(0,0,0,.5))}
 </style>
 <script>document.documentElement.classList.add("js")</script>
 </head>
@@ -270,7 +317,7 @@ details p{margin:8px 0 0;color:var(--mut);font-size:14px;animation:up .5s backwa
 <div id="splash" aria-hidden="true"><div class="sbg"><i class="o o1"></i><i class="o o2"></i><i class="o o3"></i><i class="gr"></i><i class="ob" style="--R:270px;--rot:-18deg;--T:9s;--c:#2cc4b8"><b></b></i><i class="ob" style="--R:400px;--rot:14deg;--T:15s;--c:#a78bfa"><b></b></i><i class="ob" style="--R:560px;--rot:-32deg;--T:22s;--c:#f4a259"><b></b></i><i class="rg r1"></i><i class="rg r2"></i><i class="rg r3"></i><b class="sp" style="--x:43%;--s:4.4px;--d:6.6s;--dl:-0.3s;--dx:28px"></b><b class="sp" style="--x:14%;--s:2.9px;--d:5.2s;--dl:-3.0s;--dx:-36px"></b><b class="sp" style="--x:13%;--s:3.1px;--d:5.3s;--dl:-0.5s;--dx:14px"></b><b class="sp" style="--x:9%;--s:4.1px;--d:5.5s;--dl:-1.3s;--dx:40px"></b><b class="sp" style="--x:76%;--s:4.4px;--d:7.3s;--dl:-2.4s;--dx:-12px"></b><b class="sp" style="--x:7%;--s:3.4px;--d:5.5s;--dl:-2.5s;--dx:29px"></b><b class="sp" style="--x:17%;--s:3.4px;--d:7.2s;--dl:-4.1s;--dx:-27px"></b><b class="sp" style="--x:76%;--s:3.4px;--d:5.8s;--dl:-0.6s;--dx:-32px"></b><b class="sp" style="--x:74%;--s:2.1px;--d:5.8s;--dl:-4.1s;--dx:14px"></b><b class="sp" style="--x:42%;--s:3.2px;--d:8.7s;--dl:-2.2s;--dx:-9px"></b><b class="sp" style="--x:25%;--s:3.7px;--d:6.0s;--dl:-3.4s;--dx:27px"></b><b class="sp" style="--x:65%;--s:4.2px;--d:7.9s;--dl:-1.7s;--dx:-31px"></b><b class="sp" style="--x:17%;--s:3.3px;--d:5.7s;--dl:-2.1s;--dx:22px"></b><b class="sp" style="--x:55%;--s:2.1px;--d:7.7s;--dl:-4.6s;--dx:33px"></b><b class="sp" style="--x:42%;--s:2.9px;--d:6.4s;--dl:-3.0s;--dx:18px"></b><b class="sp" style="--x:10%;--s:4.1px;--d:8.8s;--dl:-2.8s;--dx:-32px"></b><b class="sp" style="--x:9%;--s:3.8px;--d:6.2s;--dl:-3.5s;--dx:17px"></b><b class="sp" style="--x:38%;--s:3.8px;--d:8.5s;--dl:-2.1s;--dx:19px"></b><b class="sp" style="--x:47%;--s:2.4px;--d:5.5s;--dl:-0.4s;--dx:-4px"></b><b class="sp" style="--x:18%;--s:3.8px;--d:6.6s;--dl:-5.5s;--dx:23px"></b><b class="sp" style="--x:12%;--s:2.4px;--d:6.6s;--dl:-1.7s;--dx:-23px"></b><b class="sp" style="--x:57%;--s:4.2px;--d:6.1s;--dl:-2.5s;--dx:5px"></b><b class="sp" style="--x:89%;--s:4.2px;--d:8.8s;--dl:-0.9s;--dx:-18px"></b><b class="sp" style="--x:21%;--s:2.6px;--d:5.9s;--dl:-2.9s;--dx:35px"></b><b class="sp" style="--x:25%;--s:2.7px;--d:5.0s;--dl:-2.5s;--dx:7px"></b><b class="sp" style="--x:80%;--s:3.4px;--d:8.8s;--dl:-4.1s;--dx:25px"></b></div><div class="mark"><svg viewBox="0 0 96 96" aria-hidden="true"><defs><linearGradient id="lgg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2cc4b8"/><stop offset=".55" stop-color="#6f8be8"/><stop offset="1" stop-color="#a78bfa"/></linearGradient></defs><rect width="96" height="96" rx="32" fill="url(#lgg)"/><path class="lgd" d="M27 31a4 4 0 0 1 4-4h34a4 4 0 0 1 4 4v24a4 4 0 0 1-4 4H31a4 4 0 0 1-4-4z"/><path class="lgd" d="M19 68h58"/><path class="lgh" d="M48 55C38 49 38 40 43.500 39.200 46 38.900 48 40.500 48 42.500 48 40.500 50 38.900 52.500 39.200 58 40 58 49 48 55z"/></svg><div class="lgclip"><div class="lgsh"></div></div></div><div class="sw"><span style="--i:0">D</span><span style="--i:1">i</span><span style="--i:2">g</span><span style="--i:3">i</span><span style="--i:4">D</span><span style="--i:5">a</span><span style="--i:6">a</span><span style="--i:7">n</span></div><div class="st">Give a device. Unlock learning.</div><div class="ld"><i></i></div></div>
 
 <div class="wrap">
-<div class="top"><div><div class="logo"><span><svg viewBox="0 0 96 96" aria-hidden="true"><path d="M27 31a4 4 0 0 1 4-4h34a4 4 0 0 1 4 4v24a4 4 0 0 1-4 4H31a4 4 0 0 1-4-4z"/><path d="M19 68h58"/><path class="hs" d="M48 55C38 49 38 40 43.500 39.200 46 38.900 48 40.500 48 42.500 48 40.500 50 38.900 52.500 39.200 58 40 58 49 48 55z"/></svg></span>DigiDaan</div><p class="tag">Give a device. Unlock learning.</p></div><div class="acts" id="auth"></div></div>
+<div class="top"><div><div class="logo"><span><svg viewBox="0 0 96 96" aria-hidden="true"><path d="M27 31a4 4 0 0 1 4-4h34a4 4 0 0 1 4 4v24a4 4 0 0 1-4 4H31a4 4 0 0 1-4-4z"/><path d="M19 68h58"/><path class="hs" d="M48 55C38 49 38 40 43.500 39.200 46 38.900 48 40.500 48 42.500 48 40.500 50 38.900 52.500 39.200 58 40 58 49 48 55z"/></svg></span>DigiDaan</div><p class="tag">Give a device. Unlock learning.</p></div><div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap"><button class="btn alt" id="dmopen" type="button">▶ See how DigiDaan works</button><div class="acts" id="auth"></div></div></div>
 <div class="hero2"><span class="chip">SDG 4 · SDG 10 · SDG 12</span><h1 class="hero-h">Give a device.<br>Unlock learning.</h1><p>DigiDaan connects unused phones and laptops in Navi Mumbai with students who need them, through school and NGO coordinators that are checked and approved.</p><div class="acts"><button class="btn" data-t="donate">Donate a device</button><button class="btn alt" data-t="need">I need a device</button></div></div>
 <div class="stats">
 <div class="stat"><b id="s1">0</b><small>Available devices</small></div>
@@ -284,7 +331,7 @@ details p{margin:8px 0 0;color:var(--mut);font-size:14px;animation:up .5s backwa
 <div class="card"><h2>List a device</h2>
 <p class="sub">Open to all donors. Your number stays private and is visible only to signed-in coordinators.</p>
 <form id="df">
-<div class="row"><div><label>Your first name</label><input type="text" id="dn" maxlength="30" required></div><div><label>Locality</label><select id="da"></select></div></div>
+<div class="row"><div><label>Your first name</label><input type="text" id="dn" maxlength="30" required></div><div><label>Locality</label><input type="text" id="da" list="arealist" maxlength="40" placeholder="Pick from the list or type yours" autocomplete="off" required><datalist id="arealist"></datalist></div></div>
 <div class="row"><div><label>Device type</label><select id="dt"><option value="laptop">Laptop</option><option value="phone">Smartphone</option><option value="tablet">Tablet</option></select></div><div><label>Device age (years)</label><input type="number" id="dg" min="0" max="15" value="3" required></div></div>
 <div class="row"><div><label>Mobile number (private)</label><input type="text" id="dp" inputmode="numeric" maxlength="10" placeholder="10-digit number" required></div><div><label>When can you meet?</label><select id="ds"><option>Weekday evenings</option><option>Weekend mornings</option><option>Weekend evenings</option></select></div></div>
 <label>How will you hand it over?</label>
@@ -332,12 +379,12 @@ const saveMy=()=>{try{localStorage.setItem("dd_my",JSON.stringify(MY));localStor
 const isAdm=()=>!!U&&!U.isAnonymous&&ADMINS.includes(U.email);
 const mine=o=>!!U&&!!o&&o===U.uid;
 function toast(m){const t=$("toast");t.textContent=m;t.classList.add("show");clearTimeout(toast.h);toast.h=setTimeout(()=>t.classList.remove("show"),2600)}
-function show(t){document.querySelectorAll("section").forEach(s=>s.classList.toggle("on",s.id===t));document.querySelectorAll(".tabs button").forEach(b=>b.classList.toggle("on",b.dataset.t===t))}
+function show(t){document.querySelectorAll("section").forEach(s=>s.classList.toggle("on",s.id===t));document.querySelectorAll(".tabs button").forEach(b=>b.classList.toggle("on",b.dataset.t===t));document.querySelectorAll(".hero2 .btn[data-t]").forEach(b=>{const on=b.dataset.t===t;b.classList.toggle("alt",!on);b.classList.remove("pop");if(on){void b.offsetWidth;b.classList.add("pop")}})}
 const dev=id=>D.find(d=>d.id===id),nd=id=>N.find(n=>n.id===id);
 const wa=(ph,m)=>ph?"https://wa.me/91"+ph+"?text="+encodeURIComponent(m):"#";
 const gate=m=>'<div class="empty">'+m+'</div>';
 
-function score(n,d){if(n.pref!=="any"&&n.pref!==d.type)return null;const fit=FIT[n.purpose][d.type];if(fit<1)return null;const loc=n.area===d.area?3:0;return{urg:n.urg,fit,loc,total:n.urg+fit+loc}}
+function score(n,d){if(n.pref!=="any"&&n.pref!==d.type)return null;const fit=FIT[n.purpose][d.type];if(fit<1)return null;const loc=String(n.area).trim().toLowerCase()===String(d.area).trim().toLowerCase()?3:0;return{urg:n.urg,fit,loc,total:n.urg+fit+loc}}
 function vbadge(n){var y=n.ver!=="pending";return '<span class="pill '+(y?"d":"w")+'">'+(y?"Verified \u2714":"Awaiting approval")+'</span> <a class="mapl" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query='+encodeURIComponent(n.org+" "+n.area+" Navi Mumbai")+'">Check on Google Maps</a>'+(n.who==="stu"?' <small>· Student request</small>':n.reg?' <small>· '+esc(n.typ||"ID")+' '+esc(n.reg)+'</small>':"")}
 function adminRows(list){return list.length?list.map(function(n){return '<div class="item"><div><b>'+esc(n.org)+'</b> ('+esc(n.typ||"")+') · '+esc(n.area)+'<br><small>'+(n.who==="stu"?"Student request (parent or guardian informed)":"ID: "+esc(n.reg||"none"))+'</small><br><a class="mapl" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query='+encodeURIComponent(n.org+" "+n.area+" Navi Mumbai")+'">Check on Google Maps</a></div><div class="acts"><button class="btn sm" data-ap="'+n.id+'">Approve</button><button class="btn alt sm" data-rj="'+n.id+'">Reject</button></div></div>'}).join(""):'<div class="empty">No institutions awaiting approval.</div>'}
 function renderAdmin(){const c=$("admincard");if(!c)return;const adm=!!U&&ADMINS.includes(U.email);c.style.display=adm?"block":"none";if(adm)$("alist").innerHTML=adminRows(N.filter(n=>n.ver==="pending"))}
@@ -387,10 +434,10 @@ function render(){
  $("mbox").innerHTML='<div class="acts"><button class="btn" id="run">Run matching</button><button class="btn alt" id="all">Confirm all</button></div><div style="margin-top:8px">'+(props.length?props.map((p,i)=>{const d=dev(p.d),n=nd(p.n);return d&&n?'<div class="item"><div><b>'+esc(TL[d.type])+'</b> from '+esc(d.name)+' ('+esc(d.area)+') → <b>'+esc(n.stu)+'</b>, '+esc(n.org)+' ('+esc(n.area)+')<br><small>'+esc(PL[n.purpose])+' · urgency '+p.s.urg+' + fit '+p.s.fit+' + locality '+p.s.loc+' = <b>'+p.s.total+'/13</b></small><div class="bar"><i style="width:'+Math.round(p.s.total/13*100)+'%"></i></div></div><button class="btn sm" data-c="'+i+'">Confirm</button></div>':""}).join(""):gate("No suggestions yet. Tap “Run matching”."))+'</div>';
 }
 function needForm(){
- $("needform").innerHTML='<h2>Register a student’s need</h2><p class="sub">Open to everyone: schools, NGOs, students and parents. Use initials, never the full name.</p><form id="nf"><div class="row"><div><label>School / NGO</label><input type="text" id="no" maxlength="40" required></div><div><label>Student initials</label><input type="text" id="ns" maxlength="6" placeholder="e.g. A.K." required></div></div><div class="row"><div><label>Locality</label><select id="na">'+AREAS.map(a=>"<option>"+a+"</option>").join("")+'</select></div><div><label>Class</label><input type="text" id="nc" maxlength="20" placeholder="e.g. 9th, FY BSc"></div></div><div class="row"><div><label>Main purpose</label><select id="np"><option value="classes">Online classes</option><option value="coding">Coding / programming</option><option value="exams">Exam preparation</option><option value="general">General study</option></select></div><div><label>Device wanted</label><select id="nd"><option value="any">Any suitable device</option><option value="laptop">Laptop only</option><option value="phone">Smartphone only</option><option value="tablet">Tablet only</option></select></div></div><div class="row"><div><label>Coordinator mobile (private)</label><input type="text" id="nph" inputmode="numeric" maxlength="10" required></div><div><label>Available slot</label><select id="nsl"><option>Weekday evenings</option><option>Weekend mornings</option><option>Weekend evenings</option></select></div></div><label>Who is registering?</label><select id="nwho"><option value="org">School or NGO</option><option value="stu">Student or parent</option></select><div class="row"><div><label>Institution type</label><select id="nty"><option>School</option><option>NGO</option></select></div><div><label>Registration ID</label><input type="text" id="nreg" maxlength="24" placeholder="UDISE+ or NGO Darpan ID" required></div></div><label id="ncl" style="display:none;font-weight:500;align-items:center;gap:8px;margin-top:10px"><input type="checkbox" id="nco" style="width:auto"> A parent or guardian knows about this request</label><div class="note" style="margin:6px 0 0">Requests are checked before matching. Your institution is checked on Google Maps and its ID is reviewed by an admin. Needs are matched only after approval.</div><label>Handover point (school/NGO address)</label><input type="text" id="nad" maxlength="70" placeholder="e.g. School office, Sector 19, Nerul" required><label>Urgency: <span id="uv">3</span> / 5</label><input type="range" id="nu" min="1" max="5" value="3" style="width:100%;accent-color:var(--teal)"><input type="text" id="hp2" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;opacity:0;height:0"><button class="btn" type="submit">Register need</button></form>';
+ $("needform").innerHTML='<h2>Register a student’s need</h2><p class="sub">Open to everyone: schools, NGOs, students and parents. Use initials, never the full name.</p><form id="nf"><label>Who is registering?</label><select id="nwho"><option value="org">School or NGO</option><option value="stu">Student or parent</option></select><div class="row"><div><label>School / NGO</label><input type="text" id="no" maxlength="40" required></div><div><label>Student initials</label><input type="text" id="ns" maxlength="6" placeholder="e.g. A.K." required></div></div><div class="row"><div><label>Locality</label><input type="text" id="na" list="arealist" maxlength="40" placeholder="Pick from the list or type yours" autocomplete="off" required></div><div><label>Class</label><input type="text" id="nc" maxlength="20" placeholder="e.g. 9th, FY BSc"></div></div><div class="row"><div><label>Main purpose</label><select id="np"><option value="classes">Online classes</option><option value="coding">Coding / programming</option><option value="exams">Exam preparation</option><option value="general">General study</option></select></div><div><label>Device wanted</label><select id="nd"><option value="any">Any suitable device</option><option value="laptop">Laptop only</option><option value="phone">Smartphone only</option><option value="tablet">Tablet only</option></select></div></div><div class="row"><div><label id="nphl">Coordinator mobile (private)</label><input type="text" id="nph" inputmode="numeric" maxlength="10" required></div><div><label>Available slot</label><select id="nsl"><option>Weekday evenings</option><option>Weekend mornings</option><option>Weekend evenings</option></select></div></div><div class="row"><div><label>Institution type</label><select id="nty"><option>School</option><option>NGO</option></select></div><div><label>Registration ID</label><input type="text" id="nreg" maxlength="24" placeholder="UDISE+ or NGO Darpan ID" required></div></div><label id="ncl" style="display:none;font-weight:500;align-items:center;gap:8px;margin-top:10px"><input type="checkbox" id="nco" style="width:auto"> A parent or guardian knows about this request</label><div class="note" style="margin:6px 0 0">Requests are checked before matching. Your institution is checked on Google Maps and its ID is reviewed by an admin. Needs are matched only after approval.</div><label>Handover point (school/NGO address)</label><input type="text" id="nad" maxlength="70" placeholder="e.g. School office, Sector 19, Nerul" required><label>Urgency: <span id="uv">3</span> / 5</label><input type="range" id="nu" min="1" max="5" value="3" style="width:100%;accent-color:var(--teal)"><input type="text" id="hp2" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;opacity:0;height:0"><button class="btn" type="submit">Register need</button></form>';
  $("nu").oninput=e=>$("uv").textContent=e.target.value;
  $("nf").onsubmit=async e=>{e.preventDefault();if($("hp2").value)return;const ph=$("nph").value.trim();if(!/^[6-9]\d{9}$/.test(ph))return toast("Enter a valid 10-digit mobile number");if($("nwho").value==="stu"&&!$("nco").checked)return toast("A parent or guardian must know about this request");if(!db)return toast("Database not set up yet");if(!U)return toast("Connecting… please try again in a moment");const id=uid();
-  try{await setDoc(doc(db,"needs",id),{owner:U.uid,org:$("no").value.trim(),stu:$("ns").value.trim(),area:$("na").value,cls:$("nc").value.trim(),purpose:$("np").value,pref:$("nd").value,urg:+$("nu").value,st:"open",ver:"pending",who:$("nwho").value,typ:$("nwho").value==="stu"?"Student":$("nty").value,reg:$("nwho").value==="stu"?"":$("nreg").value.trim(),addr:$("nad").value.trim(),slot:$("nsl").value,by:"public"});await setDoc(doc(db,"contacts","need_"+id),{ph,owner:U.uid});PREV[id]="pending";saveMy();e.target.reset();$("uv").textContent=3;toast("Request submitted. The admin will soon verify and approve your need.");render()}catch(x){toast("Couldn’t save. Please try again.")}};
+  try{await setDoc(doc(db,"needs",id),{owner:U.uid,org:$("no").value.trim(),stu:$("ns").value.trim(),area:$("na").value.trim(),cls:$("nc").value.trim(),purpose:$("np").value,pref:$("nd").value,urg:+$("nu").value,st:"open",ver:"pending",who:$("nwho").value,typ:$("nwho").value==="stu"?"Student":$("nty").value,reg:$("nwho").value==="stu"?"":$("nreg").value.trim(),addr:$("nad").value.trim(),slot:$("nsl").value,by:"public"});await setDoc(doc(db,"contacts","need_"+id),{ph,owner:U.uid});PREV[id]="pending";saveMy();e.target.reset();$("uv").textContent=3;toast("Request submitted. The admin will soon verify and approve your need.");render()}catch(x){toast("Couldn’t save. Please try again.")}};
 }
 
 document.addEventListener("click",async e=>{
@@ -416,13 +463,13 @@ document.addEventListener("click",async e=>{
 });
 
 function boot(){
- AREAS.forEach(a=>$("da").insertAdjacentHTML("beforeend","<option>"+a+"</option>"));
+ AREAS.forEach(a=>$("arealist").insertAdjacentHTML("beforeend",'<option value="'+a+'"></option>'));
  $("df").onsubmit=async e=>{e.preventDefault();if($("hp1").value)return;
   const ck=[1,2,3,4,5].map(i=>$("c"+i).checked),ph=$("dp").value.trim();
   if(!ck[0])return toast("The device must power on to be listed");if(!ck[4])return toast("Please factory reset the device first");
   if(!/^[6-9]\d{9}$/.test(ph))return toast("Enter a valid 10-digit mobile number");
   if(!db)return toast("Database not set up yet");if(!U)return toast("Connecting… please try again in a moment");const id=uid();
-  try{await setDoc(doc(db,"devices",id),{owner:U.uid,name:$("dn").value.trim(),area:$("da").value,type:$("dt").value,age:+$("dg").value,ck,st:"available",mode:$("dm").value,slot:$("ds").value});await setDoc(doc(db,"contacts","dev_"+id),{ph,owner:U.uid});e.target.reset();$("dg").value=3;toast("Device listed. Thank you!")}catch(x){toast("Couldn’t save. Please try again.")}};
+  try{await setDoc(doc(db,"devices",id),{owner:U.uid,name:$("dn").value.trim(),area:$("da").value.trim(),type:$("dt").value,age:+$("dg").value,ck,st:"available",mode:$("dm").value,slot:$("ds").value});await setDoc(doc(db,"contacts","dev_"+id),{ph,owner:U.uid});e.target.reset();$("dg").value=3;toast("Device listed. Thank you!")}catch(x){toast("Couldn’t save. Please try again.")}};
  needForm();render();
  const app=initializeApp(firebaseConfig);db=getFirestore(app);auth=getAuth(app);
  onSnapshot(collection(db,"devices"),s=>{D=s.docs.map(x=>({...x.data(),id:x.id}));render()},()=>{});
@@ -509,7 +556,7 @@ document.addEventListener("click",function(e){var t=e.target;if(!t.dataset||!t.d
 <script>
 document.addEventListener("change",function(e){if(e.target.id!=="nwho")return;var s=e.target.value==="stu",g=function(i){return document.getElementById(i)};
  g("nty").parentElement.parentElement.style.display=s?"none":"";g("ncl").style.display=s?"flex":"none";g("nreg").required=!s;
- g("no").previousElementSibling.textContent=s?"School or college":"School / NGO";g("ns").previousElementSibling.textContent=s?"Your initials":"Student initials"});
+ g("no").previousElementSibling.textContent=s?"School or college":"School / NGO";g("ns").previousElementSibling.textContent=s?"Your initials":"Student initials";g("nphl").textContent=s?"Parent’s mobile (private)":"Coordinator mobile (private)"});
 document.addEventListener("reset",function(e){if(e.target.id==="nf")setTimeout(function(){var w=document.getElementById("nwho");if(w)w.dispatchEvent(new Event("change",{bubbles:true}))},0)});
 </script>
 <script>
@@ -580,6 +627,160 @@ document.addEventListener("reset",function(e){if(e.target.id==="nf")setTimeout(f
  function size(){var k=.55;cv.width=Math.max(2,Math.round(innerWidth*k));cv.height=Math.max(2,Math.round(innerHeight*k));gl.viewport(0,0,cv.width,cv.height)}
  size();addEventListener("resize",size);var t0=performance.now();
  (function f(now){if(!document.getElementById("splash"))return;gl.uniform2f(ur,cv.width,cv.height);gl.uniform1f(ut,(now-t0)/1000+8);gl.drawArrays(gl.TRIANGLE_STRIP,0,4);requestAnimationFrame(f)})(t0);
+})();
+</script>
+<script type="module">
+import*as T from"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js";
+(function(){if(matchMedia("(prefers-reduced-motion:reduce)").matches)return;
+try{
+const cv=document.createElement("canvas");cv.id="bg3d";document.body.prepend(cv);
+const r=new T.WebGLRenderer({canvas:cv,antialias:true,alpha:true});r.setPixelRatio(Math.min(devicePixelRatio,1.5));
+const sc=new T.Scene(),cam=new T.PerspectiveCamera(45,1,.1,200);
+sc.add(new T.AmbientLight(0x88aaff,1.1));const dl=new T.DirectionalLight(0x2cc4b8,2.2);dl.position.set(3,5,6);sc.add(dl);
+const gp=new T.Group();sc.add(gp);
+const mt=new T.MeshStandardMaterial({color:0x1d2e40,metalness:.6,roughness:.35,transparent:true});
+const base=new T.Mesh(new T.BoxGeometry(4,.12,2.8),mt);gp.add(base);
+const pad=new T.Mesh(new T.BoxGeometry(1.1,.01,.7),new T.MeshStandardMaterial({color:0x2a4258,transparent:true}));pad.position.set(0,.065,.75);gp.add(pad);
+const hinge=new T.Group();hinge.position.set(0,.06,-1.4);gp.add(hinge);
+const lid=new T.Mesh(new T.BoxGeometry(4,2.6,.08),mt);lid.position.y=1.3;hinge.add(lid);
+const c2=document.createElement("canvas");c2.width=1280;c2.height=800;const g=c2.getContext("2d"),tx=new T.CanvasTexture(c2);tx.anisotropy=8;
+const scr=new T.Mesh(new T.PlaneGeometry(3.7,2.3),new T.MeshBasicMaterial({map:tx,transparent:true}));scr.position.set(0,1.3,.045);hinge.add(scr);
+const cl=x=>Math.min(1,Math.max(0,x)),eo=x=>1-Math.pow(1-cl(x),3);
+function rr(x,y,w,h,r,f){g.beginPath();(g.roundRect||g.rect).call(g,x,y,w,h,r);g.fillStyle=f;g.fill()}
+function ln(x1,y1,x2,y2,c){g.strokeStyle=c;g.lineWidth=4;g.beginPath();g.moveTo(x1,y1);g.lineTo(x2,y2);g.stroke()}
+const PH=["Every device deserves a second life.","Every student deserves a chance to learn.","Matched. Handed over. Learning unlocked."];
+function typ(t){const cy=PH.map(p=>p.length/16+1.8+p.length/32+.3),tot=cy[0]+cy[1]+cy[2];let u=t%tot,i=0;while(u>cy[i]){u-=cy[i];i++}
+const p=PH[i],ty=p.length/16,n=u<ty?Math.floor(u*16):u<ty+1.8?p.length:Math.max(0,p.length-Math.floor((u-ty-1.8)*32));return p.slice(0,n)+(Math.floor(t*2.5)%2?"":"|")}
+function main(t){g.clearRect(0,0,640,400);g.fillStyle="#0b1d2c";g.fillRect(0,0,640,400);
+const gr=g.createRadialGradient(320,230,10,320,230,380);gr.addColorStop(0,"rgba(44,196,184,.25)");gr.addColorStop(1,"rgba(0,0,0,0)");g.fillStyle=gr;g.fillRect(0,0,640,400);
+g.fillStyle="rgba(255,255,255,.06)";g.fillRect(0,0,640,62);g.textAlign="left";g.fillStyle="#2cc4b8";g.font="700 20px system-ui,sans-serif";g.fillText("DigiDaan",18,38);
+g.fillStyle="#e6eef5";g.font="600 18px ui-monospace,Consolas,monospace";g.fillText(typ(t),130,38);
+const DU=[6,7,7,6,7],c=t%33;let si=0,ta=c;while(si<4&&ta>=DU[si]){ta-=DU[si];si++}const du=DU[si];g.save();g.globalAlpha=Math.max(0,Math.min(1,ta/.5,(du-ta)/.5));
+if(si==0){[["Devices donated",128],["Students helped",96],["E-waste saved (kg)",340]].forEach((a,i)=>{const x=20+i*205;rr(x,84,190,84,12,"rgba(44,196,184,.14)");g.textAlign="left";g.fillStyle="#e6eef5";g.font="700 34px system-ui,sans-serif";g.fillText(Math.round(a[1]*eo((ta-.3)/2.5)),x+14,130);g.fillStyle="#9fb4c7";g.font="500 14px system-ui,sans-serif";g.fillText(a[0],x+14,154)});
+rr(20,184,600,200,12,"rgba(255,255,255,.05)");g.fillStyle="#9fb4c7";g.font="500 13px system-ui,sans-serif";g.textAlign="left";g.fillText("Devices handed over each month",34,208);
+[30,44,38,62,75,70,96,118].forEach((v,i)=>{const h=v*eo((ta-.8-i*.25)/1);rr(44+i*70,364-h,46,h,6,i==7?"#f4a259":"#2cc4b8")});
+const P=[30,44,38,62,75,70,96,118].map((v,i)=>[67+i*70,338-v]),pr=eo((ta-1.2)/3.4)*7;let ax=P[0][0],ay=P[0][1],an=-.4;
+g.strokeStyle="#f4a259";g.lineWidth=5;g.lineCap="round";g.lineJoin="round";g.beginPath();g.moveTo(ax,ay);
+for(let i=0;i<7;i++){const f=cl(pr-i);if(f<=0)break;const a=P[i],b=P[i+1];ax=a[0]+(b[0]-a[0])*f;ay=a[1]+(b[1]-a[1])*f;an=Math.atan2(b[1]-a[1],b[0]-a[0]);g.lineTo(ax,ay)}
+g.stroke();if(pr>.05){g.save();g.translate(ax,ay);g.rotate(an);g.fillStyle="#f4a259";g.beginPath();g.moveTo(15,0);g.lineTo(-8,-11);g.lineTo(-8,11);g.closePath();g.fill();g.restore()}}
+else if(si==1){const MP=[["Airoli",300,135],["Vashi",430,182],["Sanpada",360,226],["Nerul",250,255],["Seawoods",335,292],["Belapur",205,322],["Kharghar",425,332],["Panvel",525,300]],E=[[0,1],[2,1],[2,3],[4,3],[4,5],[6,5],[6,7]],CC=["rgba(44,196,184,","rgba(167,139,250,"];
+rr(20,96,600,296,14,"rgba(255,255,255,.05)");g.strokeStyle="rgba(255,255,255,.05)";g.lineWidth=1;for(let i=1;i<10;i++){g.beginPath();g.moveTo(20+i*60,96);g.lineTo(20+i*60,392);g.stroke()}for(let i=1;i<5;i++){g.beginPath();g.moveTo(20,96+i*59);g.lineTo(620,96+i*59);g.stroke()}
+g.textAlign="left";g.fillStyle="#e6eef5";g.font="700 18px system-ui,sans-serif";g.fillText("Connecting Navi Mumbai",36,126);
+E.forEach((e,i)=>{const a=MP[e[0]],b=MP[e[1]],f=eo((ta-1.6-i*.25)/.8);if(f<=0)return;ln(a[1],a[2],a[1]+(b[1]-a[1])*f,a[2]+(b[2]-a[2])*f,"rgba(124,140,230,.55)");
+if(f>=1&&ta>2.6){const u=((ta-2.6)*.45+i*.31)%1;g.beginPath();g.arc(a[1]+(b[1]-a[1])*u,a[2]+(b[2]-a[2])*u,5,0,7);g.fillStyle="#f4a259";g.shadowColor="#f4a259";g.shadowBlur=12;g.fill();g.shadowBlur=0}});
+MP.forEach((n,i)=>{const k=eo((ta-.3-i*.2)/.5);if(k<=0)return;const ph=(ta*.7+i*.3)%1;g.beginPath();g.arc(n[1],n[2],7*k,0,7);g.fillStyle=CC[i%2]+"1)";g.fill();g.beginPath();g.arc(n[1],n[2],(9+10*ph)*k,0,7);g.strokeStyle=CC[i%2]+(.6*(1-ph))+")";g.lineWidth=2;g.stroke();
+if(k>.5){g.textAlign="center";g.fillStyle="#e6eef5";g.font="600 12px system-ui,sans-serif";g.fillText(n[0],n[1],n[2]+24)}});
+g.textAlign="left";g.font="500 12px system-ui,sans-serif";g.fillStyle="#9fb4c7";g.beginPath();g.arc(40,377,5,0,7);g.fillStyle="#2cc4b8";g.fill();g.fillStyle="#9fb4c7";g.fillText("Donors",52,381);g.beginPath();g.arc(120,377,5,0,7);g.fillStyle="#a78bfa";g.fill();g.fillStyle="#9fb4c7";g.fillText("Schools & NGOs",132,381)}
+else if(si==2){const LF=[["Laptop · 3 yr","Donor, Nerul"],["Smartphone · 2 yr","Donor, Vashi"],["Tablet · 4 yr","Donor, Kharghar"]],RT=[["A.K. · 9th","Coding, urgency 5/5"],["R.S. · 10th","Online classes, 4/5"],["M.P. · FY BSc","Exam prep, 3/5"]],lp=(a,b,k)=>a+(b-a)*k;
+g.textAlign="center";g.fillStyle="#9fb4c7";g.font="600 15px system-ui,sans-serif";g.fillText("Smart matching: urgency + fit + locality",320,92);
+for(let i=0;i<3;i++){const y=108+i*88,tp=eo((ta-.3-i*.35)/.9),sn=eo((ta-2.4-i*.7)/.8),lx=lp(lp(-190,30,tp),150,sn),rx=lp(lp(640,440,tp),320,sn),col=sn>.5?"#2cc4b8":"rgba(255,255,255,.25)";
+[[lx,LF[i]],[rx,RT[i]]].forEach(c=>{rr(c[0],y,170,68,12,"rgba(255,255,255,.08)");g.strokeStyle=col;g.lineWidth=2;g.stroke();g.textAlign="left";g.fillStyle="#e6eef5";g.font="700 16px system-ui,sans-serif";g.fillText(c[1][0],c[0]+14,y+28);g.fillStyle="#9fb4c7";g.font="500 13px system-ui,sans-serif";g.fillText(c[1][1],c[0]+14,y+50)});
+const bp=cl((ta-3.1-i*.7)/.6);if(bp>0){g.beginPath();g.arc(320,y+34,16*eo(bp),0,7);g.fillStyle="#2cc4b8";g.fill();g.beginPath();g.arc(320,y+34,16+34*bp,0,7);g.strokeStyle="rgba(44,196,184,"+(.7*(1-bp))+")";g.lineWidth=3;g.stroke();g.textAlign="center";g.fillStyle="#04232b";g.font="700 18px system-ui,sans-serif";g.fillText("✓",320,y+41)}}
+g.save();g.globalAlpha*=eo((ta-5.2)/.5);g.textAlign="center";g.fillStyle="#2cc4b8";g.font="700 20px system-ui,sans-serif";g.fillText("3 matches made",320,388);g.restore()}
+else if(si==3){const CD=["4","7","2","9"],F=(sz,w)=>g.font=(w||700)+" "+sz+"px system-ui,sans-serif";
+g.save();g.globalAlpha*=eo((ta-.2)/.5);rr(24,92,292,296,14,"rgba(255,255,255,.05)");g.textAlign="left";g.fillStyle="#e6eef5";F(16);g.fillText("Donor sends the code",42,122);g.fillStyle="#9fb4c7";F(12,500);g.fillText("by WhatsApp, at the handover",42,142);
+const bp=eo((ta-.7)/.5);g.save();g.globalAlpha*=bp;g.translate(0,(1-bp)*18);rr(42,158,256,140,12,"#0b4a3d");g.fillStyle="#e6eef5";F(13,500);g.fillText("Hi! I’m the DigiDaan donor.",56,182);g.fillText("My handover code is:",56,202);
+CD.forEach((d,i)=>{const x=56+i*58,k=eo((ta-1.3-i*.4)/.3);rr(x,212,50,56,10,"rgba(255,255,255,.12)");if(k>0){g.save();g.globalAlpha*=k;g.fillStyle="#2cc4b8";F(32);g.textAlign="center";g.fillText(d,x+25,252+(1-k)*14);g.restore()}});
+g.fillStyle=ta>2.9?"#53bdeb":"#9fb4c7";F(12,600);g.textAlign="right";g.fillText("10:42 ✓✓",290,290);g.restore();g.restore();
+g.save();g.globalAlpha*=cl((ta-3)/.4)*(.6+.4*Math.sin(ta*8));g.fillStyle="#2cc4b8";F(26);g.textAlign="center";g.fillText("›",326,222);g.restore();
+g.save();g.globalAlpha*=eo((ta-3.1)/.5);rr(336,92,280,296,14,"rgba(255,255,255,.05)");g.textAlign="left";g.fillStyle="#e6eef5";F(16);g.fillText("Coordinator enters it",354,122);g.fillStyle="#9fb4c7";F(12,500);g.fillText("to confirm the handover",354,142);
+CD.forEach((d,i)=>{const x=354+i*62,on=ta>3.7+i*.3;rr(x,166,52,62,10,"rgba(255,255,255,.08)");g.strokeStyle=on?"#2cc4b8":"rgba(255,255,255,.2)";g.lineWidth=2;g.stroke();if(on){g.fillStyle="#e6eef5";F(32);g.textAlign="center";g.fillText(d,x+26,208)}});
+const ok=ta>5.1;rr(354,252,244,48,12,ok?"#3ecf8e":"#2cc4b8");g.fillStyle="#04232b";F(15);g.textAlign="center";g.fillText(ok?"Received ✓":"Verify and mark received",476,282);
+if(ok){const rp=cl((ta-5.1)/.7);g.beginPath();(g.roundRect||g.rect).call(g,354-rp*10,252-rp*10,244+rp*20,48+rp*20,12+rp*8);g.strokeStyle="rgba(62,207,142,"+(.8*(1-rp))+")";g.lineWidth=3;g.stroke();g.fillStyle="#3ecf8e";F(14,600);g.fillText("Device handed over. Receipt ready.",476,334)}
+g.restore()}
+else{g.textAlign="center";g.fillStyle="#e6eef5";g.font="700 24px system-ui,sans-serif";g.fillText("How it works",320,112);
+["List","Approve","Match","Handover"].forEach((n,i)=>{const x=95+i*150,y=215,k=eo((ta-.6-i*1.3)/.7);
+if(i<3){ln(x+36,y,x+114,y,"rgba(255,255,255,.15)");ln(x+36,y,x+36+78*eo((ta-1.1-i*1.3)/.8),y,"#2cc4b8")}
+g.beginPath();g.arc(x,y,32,0,7);g.fillStyle=k>0?"rgba(44,196,184,"+(.15+.85*k)+")":"rgba(255,255,255,.08)";g.fill();
+g.fillStyle=k>.6?"#04232b":"#e6eef5";g.font="700 28px system-ui,sans-serif";g.fillText(k>.6?"✓":i+1,x,y+10);
+g.fillStyle="#e6eef5";g.font="700 17px system-ui,sans-serif";g.fillText(n,x,y+62);
+g.fillStyle="#9fb4c7";g.font="500 12px system-ui,sans-serif";g.fillText(["Donor lists a device","Admin checks need","Best match found","Code verified"][i],x,y+82)})}
+g.restore();tx.needsUpdate=true}
+const LG=["M27 31a4 4 0 0 1 4-4h34a4 4 0 0 1 4 4v24a4 4 0 0 1-4 4H31a4 4 0 0 1-4-4z","M19 68h58"].map(d=>new Path2D(d)),HT=new Path2D("M48 55C38 49 38 40 43.5 39.2 46 38.9 48 40.5 48 42.5 48 40.5 50 38.9 52.5 39.2 58 40 58 49 48 55z");
+function splash(t){g.clearRect(0,0,640,400);const bg=g.createRadialGradient(320,160,20,320,200,420);bg.addColorStop(0,"#12304a");bg.addColorStop(1,"#08121d");g.fillStyle=bg;g.fillRect(0,0,640,400);
+const k=eo(t/.8);g.save();g.globalAlpha=k;g.translate(320,140);g.scale((.6+.4*k)*1.05,(.6+.4*k)*1.05);g.translate(-48,-48);
+const lg=g.createLinearGradient(0,0,96,96);lg.addColorStop(0,"#2cc4b8");lg.addColorStop(.55,"#6f8be8");lg.addColorStop(1,"#a78bfa");g.beginPath();(g.roundRect||g.rect).call(g,0,0,96,96,32);g.fillStyle=lg;g.fill();
+g.strokeStyle="#fff";g.lineWidth=3.5;g.lineCap="round";LG.forEach(p=>g.stroke(p));g.fillStyle="#fff";g.fill(HT);g.restore();
+const L="DigiDaan".split("");g.font="700 56px system-ui,sans-serif";g.textAlign="left";const ws=L.map(c=>g.measureText(c).width);let x=320-ws.reduce((a,b)=>a+b)/2;
+L.forEach((c,i)=>{const q=eo((t-.5-i*.09)/.5);g.save();g.globalAlpha=q;g.fillStyle="#e6eef5";g.fillText(c,x,262+(1-q)*28);g.restore();x+=ws[i]});
+g.save();g.globalAlpha=eo((t-1.5)/.8);g.textAlign="center";g.fillStyle="#2cc4b8";g.font="600 19px system-ui,sans-serif";g.fillText("Give a device. Unlock learning.",320,300);g.restore();
+const bw=240;g.save();g.globalAlpha=eo((t-1)/.6);rr(320-bw/2,330,bw,5,3,"rgba(255,255,255,.14)");const f=bw*eo((t-1.2)/2.2);const bf=g.createLinearGradient(200,0,440,0);bf.addColorStop(0,"#2cc4b8");bf.addColorStop(1,"#f4a259");rr(320-bw/2,330,Math.max(0,f),5,3,bf);g.restore();tx.needsUpdate=true}
+function draw(t){g.setTransform(2,0,0,2,0,0);const T=4.2;if(t<T){splash(t);if(t>T-.5){g.save();g.globalAlpha=1-(T-t)/.5;g.fillStyle="#0b1d2c";g.fillRect(0,0,640,400);g.restore()}}else main(t-T)}
+const N=500,pa=new Float32Array(N*3);for(let i=0;i<N*3;i++)pa[i]=(Math.random()-.5)*(i%3==2?60:40);
+const pts=new T.Points(new T.BufferGeometry().setAttribute("position",new T.BufferAttribute(pa,3)),new T.PointsMaterial({color:0x7fe3da,size:.06,transparent:true,opacity:.7}));sc.add(pts);
+const sl=new T.PointLight(0x2cc4b8,0,6);sl.position.set(0,1.5,.5);sc.add(sl);
+let W=0,H=0;function size(){W=innerWidth;H=innerHeight;r.setSize(W,H,false);cam.aspect=W/H;cam.fov=W/H<1?70:45}
+addEventListener("resize",size);size();
+const A=new T.Vector3(0,2.5,8.3),C=new T.Vector3(0,1.35,-1.61),B=new T.Vector3(0,1.73,.25),L0=new T.Vector3(0,.5,0);
+const ez=x=>x<.5?2*x*x:1-Math.pow(-2*x+2,2)/2;let sp=0;const t0=performance.now();
+let ex=0,xt=0;const ov=document.createElement("div");ov.id="bgov";document.body.prepend(ov);const rc=new T.Raycaster(),v2=new T.Vector2();
+const hit=ev=>{if(document.body.classList.contains("dmo")||scrollY>80||(performance.now()-t0)/1000<6.2||(ev.target.closest&&ev.target.closest("a,button,input,select,textarea,label,.stat,.card,.tabs,#splash")))return false;v2.set(ev.clientX/W*2-1,-ev.clientY/H*2+1);rc.setFromCamera(v2,cam);return rc.intersectObject(gp,true).length>0};
+document.addEventListener("click",ev=>{if(xt){xt=0;return}if(hit(ev))xt=1});
+addEventListener("keydown",ev=>{if(ev.key==="Escape")xt=0});
+const tip=document.createElement("div");tip.id="bgtip";tip.textContent="Click to expand";document.body.appendChild(tip);
+const hideTip=()=>{tip.style.opacity=0;if(!xt)document.body.style.cursor=""};
+document.addEventListener("mousemove",ev=>{if(xt){tip.style.opacity=0;return}const h=hit(ev);document.body.style.cursor=h?"zoom-in":"";tip.style.opacity=h?1:0;if(h)tip.style.transform="translate("+(ev.clientX+16)+"px,"+(ev.clientY+18)+"px)"});
+document.addEventListener("mouseleave",hideTip);addEventListener("scroll",hideTip,{passive:true});
+function loop(now){const t=(now-t0)/1000;
+const tgt=Math.min(1,scrollY/(H*1.6));sp+=(tgt-sp)*.07;
+const o=ez(Math.min(1,Math.max(0,(t-4)/2.4)));hinge.rotation.x=1.5708+(-.2-1.5708)*o;
+const e=ez(sp);if(xt&&scrollY>80)xt=0;cam.position.lerpVectors(A,B,e);const LK=L0.clone().lerp(C,e);ex+=(xt-ex)*.1;const xe=ez(Math.min(1,Math.max(0,ex)));
+if(xe>.001){const nn=new T.Vector3(0,.2,.98).normalize(),tn=Math.tan(cam.fov*Math.PI/360),nd=Math.max(2.3/.75,3.7/.75/(W/H))/2/tn;cam.position.lerp(C.clone().addScaledVector(nn,nd),xe);LK.lerp(C,xe)}
+cv.classList.toggle("x",ex>.01);ov.classList.toggle("x",xt==1);cam.lookAt(LK);
+gp.rotation.y=Math.sin(t*.35)*.18*(1-e)*(1-xe);gp.position.y=Math.sin(t*.8)*.06*(1-e)*(1-xe);
+const fa=1-Math.min(1,Math.max(0,(e-.8)/.17));mt.opacity=fa;pad.material.opacity=fa;scr.material.opacity=fa;gp.visible=fa>.01;
+pts.rotation.y=t*.02+scrollY*.0006;pts.position.z=-scrollY*.004;sl.intensity=e*2.5*fa;
+cam.updateProjectionMatrix();draw(Math.max(0,t-4));r.render(sc,cam);requestAnimationFrame(loop)}
+requestAnimationFrame(loop);
+}catch(e){var c=document.getElementById("bg3d");if(c)c.remove()}})();
+</script>
+<script>
+(function(){
+var sl=function(m){return new Promise(function(r){setTimeout(r,m)})},TOK=0,ROLE="",ov,SC,ST,CU;
+var R=function(a){return a.map(function(x){return '<div class="dm-r"><small>'+x[0]+'</small><div class="dmf" id="'+x[1]+'"></div></div>'}).join("")};
+var G=function(a){return '<div class="dm-g">'+R(a)+'</div>'},B=function(t,id){return '<div class="dmb" id="'+id+'">'+t+'</div>'};
+var TB=function(a){return '<div class="dm-tabs">'+["Donate","Needs","Match","Log"].map(function(t,i){return '<span'+(i==a?' class="on"':'')+'>'+t+'</span>'}).join("")+'</div>'};
+var C=function(h,b){return '<div class="dm-c"><h4>'+h+'</h4>'+b+'</div>'};
+var OK=function(t){return '<div class="dm-ok rv" id="ok">'+t+'</div>'},WA=function(t){return '<div class="dm-wa rv" id="wa">'+t+'</div>'};
+var HO=function(b){return TB(3)+C("Handover · Laptop",b)};
+var FL={
+donor:[
+["List your device","Open the Donate tab. Enter your first name, locality (pick or type), device type and age, then your mobile number. Your number stays private.",TB(0)+C("List a device",G([["Your first name","n"],["Locality","l"],["Device type","t"],["Device age (years)","a"],["Mobile number (private)","m"]])+B("List device","b")+OK("✓ Listed! Your device is now visible to coordinators.")),[["t","n","Riya"],["t","l","Nerul"],["t","t","Laptop"],["t","a","3"],["t","m","98••••••10"],["c","b"],["s","ok"]]],
+["Wait for a match","A coordinator registers a student’s need and the admin approves it. Smart matching pairs it with your device by urgency, device fit and locality.",TB(2)+C("Smart matching",'<div class="dm-it"><div><b>Laptop</b> from Riya (Nerul) → <b>A.K.</b>, Nerul School<br><small>Score 12 · urgency 5 + fit 4 + same locality 3</small></div>'+B("Confirm","cf")+'</div>'+OK("✓ Match confirmed. A handover is created in the Log tab.")),[["w",900],["c","cf"],["s","ok"]]],
+["Agree a time and place","Open the Log tab and tap “Message coordinator”. A WhatsApp message is already drafted for you. Just send it and agree on when and where to meet.",HO('<b>1. Contact</b>'+B("Message coordinator","b")+WA("Hi, I’m Riya, the DigiDaan donor. Can we meet at Nerul School on a weekday evening? Please confirm a time.")),[["c","b"],["s","wa"]]],
+["Hand over the device","Meet the coordinator at the agreed place and hand over the device. Once you are happy with who you are giving it to, tap “Mark as met”.",HO('<b>2. Meet and hand over</b>'+B("Mark as met","b")+OK("✓ Marked as met")),[["c","b"],["s","ok"]]],
+["Send the secret code","Only now, tap “Donor: send handover code”. WhatsApp opens with your 4-digit code ready to send. Only you have this code, so the real receiver is verified.",HO('<b>3. Verify and receive</b>'+B("Donor: send handover code","b")+WA("My handover code for the Laptop going to A.K. is <b>4729</b>. Please enter it on the DigiDaan log page.")),[["c","b"],["s","wa"]]],
+["Done!","The coordinator enters your code and taps “Verify and mark received”. Your device shows as Handed over and a receipt is saved. Thank you for giving a student a chance to learn!",'<div class="dm-done"><i>✓</i><b>Handed over!</b><span>Receipt saved · Laptop · Nerul</span></div>',[]]
+],
+req:[
+["Say who you are","Open the Needs tab. First choose who is registering: a student or parent, or a school or NGO. Then add the school, your initials, locality (pick or type) and class.",TB(1)+C("Register a student’s need",G([["Who is registering?","w"],["School or college","o"],["Your initials","i"],["Locality","l"],["Class","c"]])),[["t","w","Student or parent"],["t","o","Nerul Public School"],["t","i","A.K."],["t","l","Nerul"],["t","c","9th"]]],
+["Add the details","Choose the main purpose and the device you want, then add the parent’s mobile number (private). Tick that a parent knows, and tap “Register need”.",TB(1)+C("Register a student’s need",G([["Main purpose","p"],["Device wanted","d"],["Parent’s mobile (private)","m"],["Urgency","u"]])+'<div><span class="dmf" id="ck" style="display:inline-block;width:1.3em;min-height:1.3em;padding:0 .2em;text-align:center"></span> A parent or guardian knows about this request</div>'+B("Register need","b")+OK("✓ Request sent. It is checked before matching.")),[["t","p","Online classes"],["t","d","Laptop"],["t","m","98••••••32"],["t","u","4 / 5"],["t","ck","✓"],["c","b"],["s","ok"]]],
+["Wait for approval","An admin checks your request. When it shows Verified ✔ it can be matched with a donor’s device. Check “Your requests” to follow its progress.",TB(1)+C("Your requests",'<div class="dm-it"><div><b>A.K.</b> · Online classes · Laptop</div><div><span class="dm-pl" data-g="1" id="p1">Awaiting approval</span><span class="dm-pl g rv" data-g="1" id="p2">Verified ✔</span><span class="dm-pl g rv" data-g="1" id="p3">Matched</span></div></div>'+OK("A donor’s laptop has been matched. Open the Log tab to continue.")),[["w",1300],["s","p2"],["w",1400],["s","p3"],["s","ok"]]],
+["Contact the donor","In the Log tab, tap “Message donor”. A WhatsApp message is already drafted. Send it and agree on a safe public place or the school.",HO('<b>1. Contact</b>'+B("Message donor","b")+WA("Hi, I’m the parent of A.K. from DigiDaan. Can we meet at Nerul Public School on a weekday evening? Please confirm a time.")),[["c","b"],["s","wa"]]],
+["Meet and get the code","Meet the donor at the agreed place. When you receive the device, ask them to send you their 4-digit code on WhatsApp.",HO('<b>2. Meet</b><div class="dm-wa" style="background:#1d2f40">Donor: please wait a moment…</div>'+WA("My handover code for the Laptop going to A.K. is <b>4729</b>.")),[["w",1500],["s","wa"]]],
+["Verify and receive","Tap “Mark as met”, type the code the donor sent you, and tap “Verify and mark received”. The laptop is yours, and the receipt is saved.",HO(B("Mark as met","m")+'<div class="dm-r"><small>Enter the 4-digit code</small><div class="dmf" id="dc"></div></div>'+B("Verify and mark received","v")+OK("✓ Received! The laptop is handed over. Receipt ready.")),[["c","m"],["t","dc","4729"],["c","v"],["s","ok"]]]
+]};
+function build(){ov=document.createElement("div");ov.id="dm";ov.innerHTML='<button class="btn alt dm-x" type="button" data-dm="close">✕ Close</button><div class="dm-lap"><div class="dm-lid"><div class="dm-scr" id="dmscr"><div class="dm-hd"><span class="dm-lg">D</span><b>DigiDaan</b><span class="dm-sc" id="dmsc"></span></div><div class="dm-st" id="dmst"></div><div class="dm-cap" id="dmcap"></div><svg class="dm-cur" id="dmcur" viewBox="0 0 24 24"><path d="M3 2l17 8-7 2-3 7z" fill="#fff" stroke="#04232b" stroke-width="1.5"/></svg></div></div><div class="dm-base"></div></div>';document.body.appendChild(ov);SC=ov.querySelector("#dmscr");ST=ov.querySelector("#dmst");CU=ov.querySelector("#dmcur");
+ov.addEventListener("click",function(e){var b=e.target.closest("[data-dm]");if(!b)return;var v=b.dataset.dm;if(v==="close")close();else if(v==="replay")run(ROLE);else run(v==="donor"||v==="req"?v:(ROLE==="donor"?"req":"donor"))})}
+function open(){if(!ov)build();ov.classList.add("on");document.body.classList.add("dmo");chooser()}
+function close(){TOK++;ov.classList.remove("on");document.body.classList.remove("dmo")}
+function chooser(){TOK++;ROLE="";ov.querySelector("#dmsc").textContent="Interactive guide";ov.querySelector("#dmcap").innerHTML="<b>Welcome to DigiDaan</b>See the full process from start to finish. Choose who you are.";CU.style.transform="translate(-99px,-99px)";ST.innerHTML='<div class="dm-ch"><button data-dm="donor"><b>I’m a donor</b>I have a phone, laptop or tablet to give</button><button data-dm="req"><b>I’m a coordinator or student</b>I need a device for learning</button></div>'}
+async function mv(el,tk){var a=el.getBoundingClientRect(),b=SC.getBoundingClientRect();CU.style.transform="translate("+(a.left-b.left+a.width*.55)+"px,"+(a.top-b.top+a.height*.5)+"px)";await sl(800)}
+async function run(role){var tk=++TOK,F=FL[role],n=F.length;ROLE=role;
+for(var i=0;i<n;i++){if(tk!==TOK)return;var s=F[i];ov.querySelector("#dmsc").textContent=(role==="donor"?"Donor guide":"Student / coordinator guide")+" · Step "+(i+1)+" of "+n;
+ov.querySelector("#dmcap").innerHTML="<b>"+(i+1)+". "+s[0]+"</b>"+s[1]+'<div class="dm-dots">'+F.map(function(_,j){return '<i'+(j<=i?' class="on"':'')+'></i>'}).join("")+"</div>";
+ST.innerHTML=s[2];await sl(700);
+for(var k=0;k<s[3].length;k++){if(tk!==TOK)return;var a=s[3][k],el=a[1]&&typeof a[1]==="string"?ST.querySelector("#"+a[1]):null;
+if(a[0]==="w")await sl(a[1]);
+else if(a[0]==="t"){await mv(el,tk);el.classList.add("foc");for(var c=0;c<a[2].length;c++){if(tk!==TOK)return;el.textContent+=a[2][c];await sl(70)}el.classList.remove("foc");await sl(250)}
+else if(a[0]==="c"){await mv(el,tk);el.classList.add("hit");await sl(600)}
+else if(a[0]==="s"){if(el.dataset.g)ST.querySelectorAll('[data-g="'+el.dataset.g+'"]').forEach(function(x){x.classList.remove("on");if(!x.classList.contains("rv"))x.style.display="none"});el.classList.add("on");await sl(500)}}
+await sl(i===n-1?3200:2500)}
+if(tk!==TOK)return;CU.style.transform="translate(-99px,-99px)";ov.querySelector("#dmsc").textContent="Guide complete";
+ov.querySelector("#dmcap").innerHTML="<b>That’s the whole journey</b>You now know every step. Watch again, or see the other side.";
+ST.innerHTML='<div class="dm-done"><i>✓</i><b>Ready to start?</b></div><div class="dm-end"><button data-dm="replay">↻ Replay</button><button class="a" data-dm="other">'+(role==="donor"?"See the student / coordinator guide":"See the donor guide")+'</button><button class="a" data-dm="close">Close</button></div>'}
+document.addEventListener("click",function(e){if(e.target.closest&&e.target.closest("#dmopen"))open()});
+addEventListener("keydown",function(e){if(e.key==="Escape"&&ov&&ov.classList.contains("on"))close()});
 })();
 </script>
 </body>
