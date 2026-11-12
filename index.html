@@ -422,21 +422,29 @@ async function confirmM(p){
  const d=dev(p.d),n=nd(p.n);if(!d||!n)return;
  await updateDoc(doc(db,"devices",p.d),{st:"matched"});await updateDoc(doc(db,"needs",p.n),{st:"matched"});
  const code=String(1000+Math.floor(Math.random()*9000));
- await setDoc(doc(db,"handovers",p.n),{n:p.n,dev:p.d,dtype:d.type,donor:d.name,dph:C["dev_"+p.d]||"",cph:C["need_"+p.n]||"",org:n.org,stu:n.stu,pt:n.addr||n.org,sl:n.slot||"to be agreed",md:d.mode||"drop",area:d.area,code,status:"scheduled",fb:""});
+ await setDoc(doc(db,"handovers",p.n),{n:p.n,dev:p.d,dtype:d.type,donor:d.name,dph:C["dev_"+p.d]||"",cph:C["need_"+p.n]||"",org:n.org,stu:n.stu,pt:n.addr||n.org,sl:n.slot||"to be agreed",md:d.mode||"drop",area:d.area,code,downer:d.owner||"",nowner:n.owner||"",who:n.who||"org",status:"scheduled",fb:""});
  props=props.filter(x=>x!==p);
 }
 const mb=(ph,m,c,l)=>ph?'<a class="'+c+'" target="_blank" rel="noopener" href="'+wa(ph,m)+'">'+l+'</a>':'<button class="'+c+'" data-np="1">'+l+'</button>';
-function logCard(h){const id=h.id,done=h.status==="done",n=done?4:h.status==="met"?3:2;
- const m1="Hello "+h.donor+", I’m the DigiDaan coordinator from "+h.org+". Your "+TL[h.dtype]+" has been matched to a student. Can we meet at "+h.pt+" ("+h.sl+")? When we meet and you hand over the device, please send me your handover code from the DigiDaan log page.";
+function hrole(h){const dv=dev(h.dev),nn=nd(h.n),dO=h.downer||(dv&&dv.owner),nO=h.nowner||(nn&&nn.owner);return{adm:isAdm(),isD:mine(dO),isR:mine(nO),par:(nn?nn.who:h.who)==="stu"}}
+function logCard(h){const id=h.id,done=h.status==="done",n=done?4:h.status==="met"?3:2,R=hrole(h),adm=R.adm,isD=R.isD,isR=R.isR,any=adm||isD||isR;
+ const m1=R.par?"Hello "+h.donor+", I’m the parent or guardian of "+h.stu+" ("+h.org+"). Your "+TL[h.dtype]+" has been matched to my child. Can we meet at "+h.pt+" ("+h.sl+")? When we meet and you hand over the device, please send me your handover code from the DigiDaan log page.":"Hello "+h.donor+", I’m the DigiDaan coordinator from "+h.org+". Your "+TL[h.dtype]+" has been matched to a student. Can we meet at "+h.pt+" ("+h.sl+")? When we meet and you hand over the device, please send me your handover code from the DigiDaan log page.";
  const m2="Hello, I’m "+h.donor+", the DigiDaan donor of the "+TL[h.dtype]+" matched to "+h.stu+". "+(h.md==="drop"?"I can drop it at "+h.pt:"I can meet at a public place in "+h.area)+". Please confirm a time.";
  const m3="Hello, I’m "+h.donor+", the DigiDaan donor. My handover code for the "+TL[h.dtype]+" going to "+h.stu+" is "+h.code+". Please enter it on the DigiDaan log page to confirm you received the device.";
  let st='<div class="stepper">';["Matched","Contact","Meet","Received"].forEach((l,i)=>{st+=(i?'<s class="'+(i<n?"d":"")+'"></s>':"")+'<i class="'+(i<n?"d":"")+'" data-l="'+l+'">'+(i<n?"\u2713":i+1)+'</i>'});st+="</div>";
  let b='<div class="item col"><div style="display:flex;justify-content:space-between;gap:8px"><div><b>'+esc(TL[h.dtype])+'</b> → <b>'+esc(h.stu)+'</b>, '+esc(h.org)+'<br><small>Donor '+esc(h.donor)+'</small></div><span class="pill '+(done?"d":"m")+'">'+(done?"Handed over":h.status==="met"?"Met":"Scheduled")+'</span></div><div class="steps">';
- b+='<div><b>1. Contact</b><div class="acts" style="margin-top:6px">'+mb(h.dph,m1,"btn sm","Coordinator: message donor")+mb(h.cph,m2,"btn alt sm","Donor: message coordinator")+'</div></div>';
- b+='<div><b>2. Meet</b><br>'+esc(h.pt)+' · '+esc(h.sl)+'<br><small>'+(h.md==="drop"?"Donor drops the device at the school or NGO.":"Collect from a public place in "+esc(h.area)+".")+'</small>'+(h.status==="scheduled"?'<div class="acts" style="margin-top:6px"><button class="btn alt sm" data-hm="'+id+'">Mark as met</button></div>':'<br><small>✔ Meeting confirmed</small>')+'</div>';
+ let cb="";if(isD||adm)cb+=mb(h.cph,m2,"btn alt sm",R.par?"Message the parent":"Message coordinator");if(isR||adm)cb+=mb(h.dph,m1,"btn sm",isR?"Contact donor":"Message donor");
+ if(!cb)cb='<small>Only the donor and the requester of this match can contact each other.</small>';
+ b+='<div><b>1. Contact</b><div class="acts" style="margin-top:6px">'+cb+'</div></div>';
+ const mtg=h.status==="scheduled"?(any?'<div class="acts" style="margin-top:6px"><button class="btn alt sm" data-hm="'+id+'">Mark as met</button></div>':'<br><small>Meeting scheduled</small>'):'<br><small>✔ Meeting confirmed</small>';
+ b+='<div><b>2. Meet</b><br>'+esc(h.pt)+' · '+esc(h.sl)+'<br><small>'+(h.md==="drop"?"Donor drops the device at the school or NGO.":"Collect from a public place in "+esc(h.area)+".")+'</small>'+mtg+'</div>';
  const met=h.status==="met";
- if(!done)b+='<div><b>3. Verify and receive</b><br><small>Donor: when you hand over the device, send the 4-digit code to the coordinator.</small><div class="acts" style="margin-top:6px">'+mb(h.cph,m3,"btn alt sm","Donor: send handover code")+'</div><small style="display:block;margin-top:8px">Coordinator: enter the code the donor sends you on WhatsApp.</small><div class="acts" style="margin-top:6px"><input type="text" id="hc'+id+'" inputmode="numeric" maxlength="4" placeholder="4-digit code" style="width:130px"'+(met?"":" disabled")+'><button class="btn sm" data-hv="'+id+'"'+(met?"":" disabled")+'>Verify and mark received</button></div>'+(met?"":'<small style="display:block;margin-top:6px">Step 2 first: tap “Mark as met” once the meeting happens.</small>')+'</div>';
- else b+='<div><b>3. Received</b> ✔<br><small>Receipt DD-'+esc(id.slice(-5))+': '+esc(TL[h.dtype])+' from '+esc(h.donor)+' received by '+esc(h.org)+' on '+esc(h.done||"")+', code verified.</small>'+(h.fb?'<br><small>Feedback: “'+esc(h.fb)+'”</small>':'<div class="acts" style="margin-top:6px"><input type="text" id="hf'+id+'" placeholder="Student feedback" style="width:170px"><button class="btn sm" data-hf="'+id+'">Save</button></div>')+'</div>';
+ if(!done){let s3='<div><b>3. Verify and receive</b>';
+  if(isD)s3+='<br><small>When you hand over the device, send the 4-digit code to the '+(R.par?"parent":"coordinator")+'.</small><div class="acts" style="margin-top:6px">'+mb(h.cph,m3,"btn alt sm","Send handover code")+'</div>';
+  if(isR)s3+='<small style="display:block;margin-top:'+(isD?8:0)+'px">Enter the code the donor sends you on WhatsApp.</small><div class="acts" style="margin-top:6px"><input type="text" id="hc'+id+'" inputmode="numeric" maxlength="4" placeholder="4-digit code" style="width:130px"'+(met?"":" disabled")+'><button class="btn sm" data-hv="'+id+'"'+(met?"":" disabled")+'>Verify and mark received</button></div>'+(met?"":'<small style="display:block;margin-top:6px">Step 2 first: tap “Mark as met” once the meeting happens.</small>');
+  if(!isD&&!isR)s3+='<br><small>The donor sends a 4-digit code to the requester, who enters it here to confirm receipt.</small>';
+  b+=s3+'</div>'}
+ else b+='<div><b>3. Received</b> ✔<br><small>Receipt DD-'+esc(id.slice(-5))+': '+esc(TL[h.dtype])+' from '+esc(h.donor)+' received by '+esc(h.org)+' on '+esc(h.done||"")+', code verified.</small>'+(h.fb?'<br><small>Feedback: “'+esc(h.fb)+'”</small>':(isR||adm)?'<div class="acts" style="margin-top:6px"><input type="text" id="hf'+id+'" placeholder="Student feedback" style="width:170px"><button class="btn sm" data-hf="'+id+'">Save</button></div>':'')+'</div>';
  return b+'</div></div>'}
 function render(){
  const av=D.filter(d=>d.st==="available").length,op=N.filter(n=>n.st==="open").length;
@@ -469,11 +477,11 @@ document.addEventListener("click",async e=>{
  if(ds.ap)await updateDoc(doc(db,"needs",ds.ap),{ver:"yes"});
  if(ds.rj)await deleteDoc(doc(db,"needs",ds.rj));
  if(ds.np)toast("This number isn’t saved for this match yet. Ask the admin to sign in once so it can be filled in.");
- if(ds.hm){await updateDoc(doc(db,"handovers",ds.hm),{status:"met"});toast("Meeting confirmed")}
- if(ds.hv){const h=H[ds.hv],i=$("hc"+ds.hv);if(!h||!i)return;if(h.status!=="met")return toast("Mark the meeting as met first");if(i.value.trim()!==h.code)return toast("Code doesn’t match. Ask the donor to check it.");await updateDoc(doc(db,"handovers",ds.hv),{status:"done",done:new Date().toLocaleDateString("en-IN")});await updateDoc(doc(db,"devices",h.dev),{st:"given"});toast("Verified. Device marked as received")}
+ if(ds.hm){const h0=H[ds.hm];if(!h0)return;const r0=hrole(h0);if(!(r0.adm||r0.isD||r0.isR))return toast("Only the donor or the requester of this match can do this");await updateDoc(doc(db,"handovers",ds.hm),{status:"met"});toast("Meeting confirmed")}
+ if(ds.hv){const h=H[ds.hv],i=$("hc"+ds.hv);if(!h||!i)return;if(!hrole(h).isR)return toast("Only the requester of this match can enter the code");if(h.status!=="met")return toast("Mark the meeting as met first");if(i.value.trim()!==h.code)return toast("Code doesn’t match. Ask the donor to check it.");await updateDoc(doc(db,"handovers",ds.hv),{status:"done",done:new Date().toLocaleDateString("en-IN")});await updateDoc(doc(db,"devices",h.dev),{st:"given"});toast("Verified. Device marked as received")}
  if(ds.ca){if(!isAdm())return;if(prompt("This deletes ALL devices, needs, matches and handovers. Type DELETE to confirm.")!=="DELETE")return toast("Cancelled. Nothing was deleted");const wipe=async(col,ids)=>{for(const id of ids)await deleteDoc(doc(db,col,id))};await wipe("handovers",Object.keys(H));await wipe("devices",D.map(d=>d.id));await wipe("needs",N.map(n=>n.id));await wipe("contacts",Object.keys(C));PREV={};saveMy();toast("All data cleared. The site is back to zero")}
  if(ds.cl){const done=Object.keys(H).filter(id=>H[id].status==="done");if(!done.length)return;if(!confirm("Clear "+done.length+" completed handover(s) from the log? This cannot be undone."))return;for(const id of done)await deleteDoc(doc(db,"handovers",id));toast("Completed handovers cleared")}
- if(ds.hf){const v=$("hf"+ds.hf).value.trim();if(v){await updateDoc(doc(db,"handovers",ds.hf),{fb:v});toast("Feedback saved")}}
+ if(ds.hf){const hh=H[ds.hf];if(!hh)return;const rf=hrole(hh);if(!(rf.isR||rf.adm))return;const v=$("hf"+ds.hf).value.trim();if(v){await updateDoc(doc(db,"handovers",ds.hf),{fb:v});toast("Feedback saved")}}
  }catch(x){toast("Action failed. "+(x.code||"Please try again."))}
 });
 
